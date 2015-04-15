@@ -18,7 +18,8 @@ namespace rpgGame
         public struct Tile
         {
             public Image img;
-            public Point loc;
+            public Point esqSupIzq;
+            public Point esqInfDer;
             public bool walkable;
         }
         //private List<PictureBox> tiles;
@@ -43,7 +44,7 @@ namespace rpgGame
             //device.DrawImage(img, 0, 0);  
             foreach (Tile t in mapTiles)
             {
-                device.DrawImage(t.img, t.loc);
+                device.DrawImage(t.img, t.esqSupIzq);
             }
         }
 
@@ -58,7 +59,8 @@ namespace rpgGame
                 for(int x=0;x<line.Length;x++)
                 {
                     Tile t=new Tile();
-                    t.loc= new Point(x*40,y*40);
+                    t.esqSupIzq= new Point(x*40,y*40);
+                    t.esqInfDer = new Point(x * 40 + 39, y * 40 + 39);
                     if(line[x].ToString() == "0")
                     {
                         t.img= new Bitmap("pared.png");
@@ -80,7 +82,7 @@ namespace rpgGame
         {
             foreach (Tile t in mapTiles)
             {
-                if (t.loc == loc)
+                if ((loc.X >= t.esqSupIzq.X) && (loc.X <= t.esqInfDer.X) && (loc.Y >= t.esqSupIzq.Y) && (loc.Y <= t.esqInfDer.Y))
                 {
                     if (t.walkable)
                         return true;

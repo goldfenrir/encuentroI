@@ -32,7 +32,7 @@ namespace rpgGame
         private int dir = 2;//der=2 izq=1 arr=3 aba=0
         private int s = 0; //0->3
         private int delay = 10;
-        private int speed = 40;
+        private int speed = 10;
         public Sprite partySprite;
         private LocalMap worldMap;
         public Player(Point location, Image img, int id)

@@ -70,6 +70,7 @@ namespace rpgGame
                         t.walkable=true;
                     }
                     mapTiles.Add(t);
+
                 }
                 y++;
             }

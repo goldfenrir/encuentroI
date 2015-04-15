@@ -9,7 +9,7 @@ using System.IO;
 
 namespace rpgGame
 {
-    class LocalMap
+    class LocalMap : State
     {
 
         private Player player;

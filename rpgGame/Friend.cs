@@ -19,7 +19,6 @@ namespace rpgGame
         private int positiony;
         private int homePositionX;
         private int homePositionY;
-        private int unlockLevel;
         private Sprite sprite;
         private int dir;
         /**
@@ -154,21 +153,9 @@ namespace rpgGame
             this.homePositionY = homePositionY;
         }
 
-        /**
-         * @return the unlockLevel
-         */
-        public int getUnlockLevel()
-        {
-            return unlockLevel;
-        }
 
-        /**
-         * @param unlockLevel the unlockLevel to set
-         */
-        public void setUnlockLevel(int unlockLevel)
-        {
-            this.unlockLevel = unlockLevel;
-        }
+  
+
         public void move()
         {
 

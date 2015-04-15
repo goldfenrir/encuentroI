@@ -14,16 +14,15 @@ namespace rpgGame
         private int id;
         private String name;
         private int gender;
-        private double happiness;
-        private int numberOfFriends;
+        private double closeNess;
+        private int numberOfClues;
         private int positionX=0;
         private int positionY=0;
         private int level;
-        private int numerOfTrophies;
         private List<Image> sprite;
         private int pointingDirection;
         private Inventory inventory;
-        private List<Friend> friends;
+        private List<Item> clues;
         private int width = 35;
         private int height = 35;
         private int xMove;
@@ -32,7 +31,7 @@ namespace rpgGame
         private int dir = 2;//der=2 izq=1 arr=3 aba=0
         private int s = 0; //0->3
         private int delay = 10;
-        private int speed = 10;
+        private int speed = 3;
         public Sprite partySprite;
         private LocalMap worldMap;
         public Player(Point location, Image img, int id)
@@ -51,6 +50,16 @@ namespace rpgGame
             GetInput();
             Move();
          
+        }
+
+        public int GetnumberOfClues()
+        {
+            return numberOfClues;
+        }
+
+        public void  SetnumberOfClues(int numberClues)
+        {
+            numberOfClues=numberClues;
         }
 
         private void GetInput()
@@ -102,12 +111,12 @@ namespace rpgGame
 
         }
 
-        public void increaseHappiness()
+        public void increaseCloseness()
         {
 
         }
 
-        public void increaseNumberOfFriends(Friend friend)
+        public void increaseNumberOfClues(Friend friend)
         {
 
         }
@@ -117,10 +126,6 @@ namespace rpgGame
 
         }
 
-        public void increaseNumberOfTrophies()
-        {
-
-        }
 
         public int getPositionX()
         {

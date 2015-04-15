@@ -53,28 +53,28 @@ namespace rpgGame
             //if (running)
               //  return;
             running = true;
-            Thread newThread = new Thread(new ThreadStart(Run));
+            newThread = new Thread(new ThreadStart(Run));
             newThread.IsBackground = false;
-            newThread.Start();
+            newThread.Start();// llama al run()
         }
 
         public void Run()
         {
-            DateTimeOffset date = new DateTimeOffset();
+            //DateTimeOffset date = new DateTimeOffset();
             int fps = 60;
 		    double timePerTick = 1000000000 / fps;
 		    double delta = 0;
 		    long now;
-		    long lastTime = date.Ticks;
+		    long lastTime = DateTime.Now.ToFileTime()*100;
 		    long timer = 0;
 		    int ticks = 0;
 		
 		while(running){
-			now = date.Ticks;
+            now = DateTime.Now.ToFileTime()*100;
 			delta += (now - lastTime) / timePerTick;
 			timer += now - lastTime;
 			lastTime = now;
-			if(delta <= 1){
+			if(delta >= 1){
 				Tick();
 				//render();
                 Draw();
@@ -105,9 +105,9 @@ namespace rpgGame
             device = Graphics.FromImage(img);
             worldMap.DrawMap(device);
             playerParty.Draw(device);
-
-            monster.Draw(device);
+            //monster.Draw(device);
             worldMapSpritePb.Image = img;
+
         }
 
     }

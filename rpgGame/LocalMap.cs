@@ -60,13 +60,13 @@ namespace rpgGame
                 {
                     Tile t=new Tile();
                     t.esqSupIzq= new Point(x*40,y*40);
-                    t.esqInfDer = new Point(x * 40 + 39, y * 40 + 39);
-                    if(line[x].ToString() == "0")
+                    t.esqInfDer = new Point((x * 40) + 39, (y * 40) + 39);
+                    if(line[x].ToString() == "1")
                     {
                         t.img= new Bitmap("pared.png");
                         t.walkable=false;
                     }
-                    if(line[x].ToString() == "1")
+                    if(line[x].ToString() == "0")
                     {
                         t.img= new Bitmap("piso.png");
                         t.walkable=true;
@@ -82,13 +82,38 @@ namespace rpgGame
         {
             foreach (Tile t in mapTiles)
             {
+                int w = player.GetWidth();
+                int h = player.GetHeight();
+                //verificacion esquina sup izq del personaje
                 if ((loc.X >= t.esqSupIzq.X) && (loc.X <= t.esqInfDer.X) && (loc.Y >= t.esqSupIzq.Y) && (loc.Y <= t.esqInfDer.Y))
                 {
-                    if (t.walkable)
-                        return true;
+                            if (!t.walkable)
+                                return false;
+                                            
+                }
+                // esquina sup der del pers
+                if ((loc.X+w >= t.esqSupIzq.X) && (loc.X+w <= t.esqInfDer.X) && (loc.Y >= t.esqSupIzq.Y) && (loc.Y <= t.esqInfDer.Y))
+                {
+                    if (!t.walkable)
+                        return false;
+
+                }
+                // esquina inferior izq
+                if ((loc.X >= t.esqSupIzq.X) && (loc.X <= t.esqInfDer.X) && (loc.Y+h >= t.esqSupIzq.Y) && (loc.Y+h <= t.esqInfDer.Y))
+                {
+                    if (!t.walkable)
+                        return false;
+
+                }
+                //esquina inferio der
+                if ((loc.X+w >= t.esqSupIzq.X) && (loc.X+w <= t.esqInfDer.X) && (loc.Y+h >= t.esqSupIzq.Y) && (loc.Y+h <= t.esqInfDer.Y))
+                {
+                    if (!t.walkable)
+                        return false;
+
                 }
             }
-            return false;
+            return true;
         }
 
         public void Tick()

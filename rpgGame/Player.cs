@@ -129,7 +129,7 @@ namespace rpgGame
 
         public void setPositionX(int positionX)
         {
-            if(!(positionX < 0) && !(positionX > 650) && !worldMap.GetWalkableAt(new Point(positionX,positionY)) ) 
+            if (!(positionX < 0) && !(positionX > 650) && (worldMap.GetWalkableAt(new Point(positionX, positionY)) == true)) 
                 this.positionX = positionX;
         }
 
@@ -140,7 +140,7 @@ namespace rpgGame
 
         public void setPositionY(int positionY)
         {
-            if (!(positionY < 0) && !(positionY > 475) && !worldMap.GetWalkableAt(new Point(positionX, positionY))) 
+            if (!(positionY < 0) && !(positionY > 455) && worldMap.GetWalkableAt(new Point(positionX, positionY))) 
                 this.positionY = positionY;
         }
 
@@ -161,6 +161,16 @@ namespace rpgGame
 
         public void agregarWM(LocalMap worldMap){
             this.worldMap=worldMap;
+        }
+
+        public int GetWidth()
+        {
+            return width;
+        }
+
+        public int GetHeight()
+        {
+            return height;
         }
     }
 }

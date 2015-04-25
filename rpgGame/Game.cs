@@ -46,15 +46,12 @@ namespace rpgGame
             worldMapSpritePb.BackColor = Color.Green;
             worldMapSpritePb.Parent = gameForm;
             
-            
-            //playerParty = new Player(new Point(80, 80), 1);
-            LocalMap localMap = new LocalMap(gameForm/*, playerParty*/);
+            LocalMap localMap = new LocalMap(gameForm);
             //playerParty.agregarWM(localMap);//esto va dentrode worldmap
             // crear el state machine
             stateMachine = new StateMachine();
             stateMachine.AddState(localMap);
-            
-             //arreglar el nombre
+
             //Draw();
             
         }
@@ -113,7 +110,11 @@ namespace rpgGame
         {
                 // arreglar, poner como miembro las variables reutilizables
             stateMachine.PeekState().Draw(this.device); //statemch.top.render
-            playerParty.Draw(this.device);
+
+
+            //playerParty.Draw(this.device); AGREGAR ESTO EN PLAYER CUANDO LO JALA DE LOCALMAP
+
+
             //monster.Draw(device);
             worldMapSpritePb.Image = imageDevice;
 

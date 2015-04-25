@@ -135,7 +135,7 @@ namespace rpgGame
 
         public void setPositionX(int positionX)
         {
-            if (!(positionX < 0) && !(positionX > 650) && (worldMap.GetWalkableAt(new Point(positionX, positionY)) == true)) 
+            if (!(positionX < 0) && !(positionX > 650) && (worldMap.GetWalkableAt(new Point(positionX, positionY)) == true)) //CAMBIAR WALKABLE A LOCAL MAP
                 this.positionX = positionX;
         }
 

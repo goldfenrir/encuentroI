@@ -23,9 +23,9 @@ namespace rpgGame
         {
 
         }
-        public void Tick()
+        public virtual void Tick()
         {
-
+            //def
         }
     }
 }

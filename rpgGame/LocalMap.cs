@@ -128,7 +128,7 @@ namespace rpgGame
         }
 
         
-        public void Tick()
+        public override void Tick()
         {
             if (player != null)
             {

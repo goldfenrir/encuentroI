@@ -24,8 +24,8 @@ namespace rpgGame
         /**
          * @return the id/*/
         public Friend(Point location, Image img, int id)
-            : base(location, img, id) 
         {
+            sprite = new Sprite(location, img, id);
             isStatic = true;
         } 
         public int getId()

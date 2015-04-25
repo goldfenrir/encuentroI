@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace rpgGame
 {
-    class Player
+    class Player : Persona 
     {
         private int contDelay = 5;
         private int id;

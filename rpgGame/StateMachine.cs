@@ -8,7 +8,26 @@ namespace rpgGame
 {
     class StateMachine
     {
-        private Stack<Object> stackSM = new Stack<Object>();
+        private Stack<State> stackSM = new Stack<State>();
+
+        public StateMachine()
+        {
+        }
+
+        public void AddState(State state)
+        {
+            stackSM.Push(state);
+        }
+
+        public State PopState()
+        {
+            return stackSM.Pop();
+        }
+
+        public State PeekState()
+        {
+            return stackSM.Peek();
+        }
 
         public void udpate()
         { //falta el argumento elapsedTime, cual es el tipo? -> GF:double
@@ -30,12 +49,12 @@ namespace rpgGame
 
         }
 
-        public Stack<Object> getState()
+        public Stack<State> getState()
         {
             return stackSM;
         }
 
-        public void setState(Stack<Object> stackSM)
+        public void setState(Stack<State> stackSM)
         {
             this.stackSM = stackSM;
         }

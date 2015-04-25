@@ -24,9 +24,10 @@ namespace rpgGame
         }
         //private List<PictureBox> tiles;
         public List<Tile> mapTiles;
-        public LocalMap(Form form, Player play)
+        public LocalMap(Form form /*Player play*/)
         {
-            player = play;
+
+            player= new Player(new Point(80, 80), 1);
             mapTiles = new List<Tile>();
             LoadMap("Map");
         }

@@ -33,10 +33,11 @@ namespace rpgGame
         private int delay = 10;
         private int speed = 3;
         public Sprite partySprite;
-        private LocalMap worldMap;
-        public Player(Point location, Image img, int id)
+        //private LocalMap worldMap;
+        public Player(Point location, int id)
         {
-            partySprite = new Sprite(location, img, id);
+            Bitmap bmp = new Bitmap("ash_sheet.png"); 
+            partySprite = new Sprite(location, bmp, id);
             sprite = new List<Image>();
             //for(int py =0; py <3; py++)
                 for (int px = 0; px < 12; px++)
@@ -164,9 +165,9 @@ namespace rpgGame
             device.DrawImage(sprite[this.dir * 3 + s], positionX, positionY, width, height);
         }
 
-        public void agregarWM(LocalMap worldMap){
+        /*public void agregarWM(LocalMap worldMap){
             this.worldMap=worldMap;
-        }
+        }*/
 
         public int GetWidth()
         {

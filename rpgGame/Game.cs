@@ -16,34 +16,45 @@ namespace rpgGame
         private bool running;
         private Thread newThread;
         private Form gameForm;
-        public LocalMap worldMap;
-        private Player playerParty;
+        //public LocalMap worldMap;
+        //private Player playerParty;
         private PictureBox worldMapSpritePb;
-        private Friend monster;
+        //private Friend monster;
+        private Graphics device;
+        private Image imageDevice;
+        private StateMachine stateMachine;
+
         public Game(Form form, int w, int h, String title)
         {
             this.title = title;
             this.width = w;
             this.height = h;
             gameForm = form;
+            // se inicializa el form
             gameForm.Width = width;
             gameForm.Height = height;
             gameForm.Text = title;
             gameForm.BackColor = Color.White;
-            
-            Bitmap bmp = new Bitmap("ash_sheet.png");
-            playerParty = new Player(new Point(80, 80), bmp, 1);
-            worldMap = new LocalMap(gameForm, playerParty);
-            playerParty.agregarWM(worldMap);
+
+            imageDevice = new Bitmap(gameForm.Width, gameForm.Height);
+            device = Graphics.FromImage(imageDevice);
+
+            //se inicializa el bg
             worldMapSpritePb = new PictureBox();
             worldMapSpritePb.Width = gameForm.Width;
             worldMapSpritePb.Height = gameForm.Height;
             worldMapSpritePb.BackColor = Color.Green;
             worldMapSpritePb.Parent = gameForm;
-
-            bmp = new Bitmap("monster.png");
-            monster = new Friend(new Point (0,280),bmp,0);
-
+            
+            
+            //playerParty = new Player(new Point(80, 80), 1);
+            LocalMap localMap = new LocalMap(gameForm/*, playerParty*/);
+            //playerParty.agregarWM(localMap);//esto va dentrode worldmap
+            // crear el state machine
+            stateMachine = new StateMachine();
+            stateMachine.AddState(localMap);
+            
+             //arreglar el nombre
             //Draw();
             
         }
@@ -95,18 +106,16 @@ namespace rpgGame
         public void Tick()
         {
             KeyManager.Tick();
-            worldMap.Tick();
+            stateMachine.PeekState().Tick();
         }
 
         void Draw()
         {
-            Graphics device;
-            Image img = new Bitmap(gameForm.Width, gameForm.Height);
-            device = Graphics.FromImage(img);
-            worldMap.DrawMap(device);
-            playerParty.Draw(device);
+                // arreglar, poner como miembro las variables reutilizables
+            stateMachine.PeekState().Draw(this.device); //statemch.top.render
+            playerParty.Draw(this.device);
             //monster.Draw(device);
-            worldMapSpritePb.Image = img;
+            worldMapSpritePb.Image = imageDevice;
 
         }
 

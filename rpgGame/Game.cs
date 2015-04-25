@@ -129,6 +129,11 @@ namespace rpgGame
             return currentMap;
         }
 
+        public Layer getLc()
+        {
+            return lc;
+        }
+
     }
 
 }

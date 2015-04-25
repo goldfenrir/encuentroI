@@ -35,8 +35,13 @@ namespace rpgGame
         public Sprite partySprite;
         private Layer LC;
         //private LocalMap worldMap;
-        public Player(Point location, int id)
+        public Player(Game game, Point location, int id)
         {
+            LC = game.getLc();
+            this.eng = game;
+            name = "GGwp"; //por cambiar, tiene que ser ingresao desde el meenu inicial
+            positionX = x;
+            positionY = y;
             Bitmap bmp = new Bitmap("ash_sheet.png"); 
             partySprite = new Sprite(location, bmp, id);
             sprite = new List<Image>();

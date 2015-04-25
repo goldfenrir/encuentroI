@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace rpgGame
 {
-    class Friend : Sprite
+    class Friend
     {
         public bool isStatic;
         private int id;

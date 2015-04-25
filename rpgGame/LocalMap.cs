@@ -11,38 +11,46 @@ namespace rpgGame
 {
     class LocalMap : State
     {
-
+        private Map map;
+        private List<Map> maps = new List<Map>();
         private Player player;
+        private List<Friend> friends;
         private int mapAct;
-        public Image mapImage;
-        public struct Tile
+        
+        /*public struct Tile
         {
             public Image img;
             public Point esqSupIzq;
             public Point esqInfDer;
             public bool walkable;
-        }
+        }*/
         //private List<PictureBox> tiles;
-        public List<Tile> mapTiles;
-        public LocalMap(Form form /*Player play*/)
+        //public List<Tile> mapTiles;
+        public LocalMap(Form form, Game game /*Player play*/)
         {
 
             player= new Player(new Point(80, 80), 1);
-            mapTiles = new List<Tile>();
-            LoadMap("Map");
+            mapAct = game.getCurrentMap();
         }
 
         public override void Draw(Graphics dv)
         {
-            foreach (Tile t in mapTiles)
+            /*foreach (Tile t in mapTiles)
             {
                 dv.DrawImage(t.img, t.esqSupIzq);
             }
+            player.Draw(dv);*/
+            maps[getMapAct()].render(dv);
             player.Draw(dv);
         }
 
+        public int getMapAct()
+        {
+            return mapAct;
+        }
 
-        public void DrawMap(Graphics device)
+
+        /*public void DrawMap(Graphics device)
         {
             /*for (int x = 0; x < 80; x++)
                 for (int y = 0; y < 80; y++)
@@ -50,44 +58,19 @@ namespace rpgGame
                     //Pen pen = new Pen(Color.Transparent);
                     //Bitmap bmp = new Bitmap("background.jpg");
                     //device.DrawRectangle(pen, x * 10, y * 10, 10, 10);
-                }*/
+                }
             //Image img = Image.FromFile("background.jpg");
             //device.DrawImage(img, 0, 0);  
             foreach (Tile t in mapTiles)
             {
                 device.DrawImage(t.img, t.esqSupIzq);
             }
-        }
-
+        }*/
         
-        public void LoadMap(String mapName)
+        /*public void LoadMap(String mapName)
         {
-            StreamReader reader = new StreamReader(mapName +".txt");
-            int y=0;
-            while(!reader.EndOfStream)
-            {
-                string line= reader.ReadLine();
-                for(int x=0;x<line.Length;x++)
-                {
-                    Tile t=new Tile();
-                    t.esqSupIzq= new Point(x*40,y*40);
-                    t.esqInfDer = new Point((x * 40) + 39, (y * 40) + 39);
-                    if(line[x].ToString() == "1")
-                    {
-                        t.img= new Bitmap("pared.png");
-                        t.walkable=false;
-                    }
-                    if(line[x].ToString() == "0")
-                    {
-                        t.img= new Bitmap("piso.png");
-                        t.walkable=true;
-                    }
-                    mapTiles.Add(t);
-
-                }
-                y++;
-            }
-        }
+            
+        }*/
 
         public bool GetWalkableAt(Point loc)
         {

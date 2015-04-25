@@ -23,6 +23,10 @@ namespace rpgGame
         private Graphics device;
         private Image imageDevice;
         private StateMachine stateMachine;
+        //layer de collision
+        private Layer lc;
+        //Actual map
+        private int currentMap = 0;
 
         public Game(Form form, int w, int h, String title)
         {
@@ -46,7 +50,7 @@ namespace rpgGame
             worldMapSpritePb.BackColor = Color.Green;
             worldMapSpritePb.Parent = gameForm;
             
-            LocalMap localMap = new LocalMap(gameForm);
+            LocalMap localMap = new LocalMap(gameForm, this);
             //playerParty.agregarWM(localMap);//esto va dentrode worldmap
             // crear el state machine
             stateMachine = new StateMachine();
@@ -118,6 +122,11 @@ namespace rpgGame
             //monster.Draw(device);
             worldMapSpritePb.Image = imageDevice;
 
+        }
+
+        public int getCurrentMap()
+        {
+            return currentMap;
         }
 
     }

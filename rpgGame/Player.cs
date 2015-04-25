@@ -33,6 +33,7 @@ namespace rpgGame
         private int delay = 10;
         private int speed = 3;
         public Sprite partySprite;
+        private Layer LC;
         //private LocalMap worldMap;
         public Player(Point location, int id)
         {
@@ -44,6 +45,16 @@ namespace rpgGame
                 {
                     sprite.Add(partySprite.crop(px * width, 0, width, height));
                 }
+        }
+
+        private int getT(int x)
+        {
+            int cW = (int)(LC.getTotalX() * 1.0 / LC.getWidth());
+            return (x / cW) + 1;
+        }
+        private boolean valid(int x, int y)
+        {
+            return (x >= 0 && y >= 0 && x < 750 && y < 650);
         }
 
         public void Tick()

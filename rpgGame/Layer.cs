@@ -8,5 +8,9 @@ namespace rpgGame
 {
     class Layer
     {
+        private int id;
+        private int width, height;
+        private int totalX, totalY;
+        //private int[][] tiles;
     }
 }

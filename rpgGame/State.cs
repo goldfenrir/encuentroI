@@ -10,10 +10,7 @@ namespace rpgGame
 {
     abstract class State
     {
-        public void Draw(Graphics dev)
-        {
-
-        }
+        public abstract void Draw(Graphics dev);
         public void update()
         {
 

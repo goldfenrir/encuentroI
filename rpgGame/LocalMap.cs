@@ -32,6 +32,16 @@ namespace rpgGame
             LoadMap("Map");
         }
 
+        public override void Draw(Graphics dv)
+        {
+            foreach (Tile t in mapTiles)
+            {
+                dv.DrawImage(t.img, t.esqSupIzq);
+            }
+            player.Draw(dv);
+        }
+
+
         public void DrawMap(Graphics device)
         {
             /*for (int x = 0; x < 80; x++)
@@ -117,6 +127,7 @@ namespace rpgGame
             return true;
         }
 
+        
         public void Tick()
         {
             if (player != null)

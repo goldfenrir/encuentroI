@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace rpgGame
 {
@@ -12,7 +14,7 @@ namespace rpgGame
         protected Image background;
         private int mapAct;
 
-        public void render()
+        public override void Draw(Graphics dv)
         {
 
         }

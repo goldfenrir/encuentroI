@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace rpgGame
 {
@@ -12,7 +14,7 @@ namespace rpgGame
         private List<String> options = new List<String>();
         private int posY;
 
-        private void render()
+        public override void Draw(Graphics dv)
         {
 
         }

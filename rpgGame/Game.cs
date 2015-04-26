@@ -50,11 +50,23 @@ namespace rpgGame
             worldMapSpritePb.BackColor = Color.Green;
             worldMapSpritePb.Parent = gameForm;
             
-            LocalMap localMap = new LocalMap(gameForm, this);
+            //LocalMap localMap = new LocalMap(gameForm, this);
             //playerParty.agregarWM(localMap);//esto va dentrode worldmap
             // crear el state machine
+            String[] paths = new String[2];
+            //        String s=new File("a.txt").getAbsolutePath();
+            paths[0] = "l1.txt";
+
+            paths[1] = "lc1.txt";
+            String[] dirImg = new String[2];
+            dirImg[0] = "l1.png";
+            dirImg[1] = "lc1.png";
+            Map map = new Map(this, 2, paths, dirImg);//eng, cant layer, paths2, iamgeleyer
+            lc = map.getLC();
+            LocalMap LMS = new LocalMap(gameForm, this);
+            LMS.getMaps().Add(map);
             stateMachine = new StateMachine();
-            stateMachine.AddState(localMap);
+            stateMachine.AddState(LMS);
 
             //Draw();
             

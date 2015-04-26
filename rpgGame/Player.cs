@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace rpgGame
 {
-    class Player : Persona 
+    class Player : Person 
     {
         private int contDelay = 5;
         private int id;
@@ -40,8 +40,8 @@ namespace rpgGame
             LC = game.getLc();
             this.eng = game;
             name = "GGwp"; //por cambiar, tiene que ser ingresao desde el meenu inicial
-            positionX = x;
-            positionY = y;
+            positionX = location.X;
+            positionY = location.Y;
             Bitmap bmp = new Bitmap("ash_sheet.png"); 
             partySprite = new Sprite(location, bmp, id);
             sprite = new List<Image>();
@@ -57,7 +57,7 @@ namespace rpgGame
             int cW = (int)(LC.getTotalX() * 1.0 / LC.getWidth());
             return (x / cW) + 1;
         }
-        private boolean valid(int x, int y)
+        private bool valid(int x, int y)
         {
             return (x >= 0 && y >= 0 && x < 750 && y < 650);
         }
@@ -91,9 +91,13 @@ namespace rpgGame
                 //s es un sprite movimiento de una direccion
                 if (dir == 2) { if (delay == 0) { s++; delay = contDelay; } else delay--; } else s = 0;
                 this.dir = 2;
+
+                if (valid(getPositionX(), getPositionY() - speed))//valida si esta en marco
+                    if (LC.getTiles()[getT(getPositionX())][getT(getPositionY() - speed)] == 1)//colision
+                        yMove = -speed;
                 //collision
                 //                    if (LC.getTiles()[yMove-speed][1]==1)
-                yMove = -speed;
+                //yMove = -speed;
  
             }
 
@@ -103,7 +107,11 @@ namespace rpgGame
             {
                 if (dir == 0) { if (delay == 0) { s++; delay = contDelay; } else delay--; } else s = 0;
                 this.dir = 0;
-                yMove = speed;
+
+                if (valid(getPositionX(), getPositionY() + speed))
+                    if (LC.getTiles()[getT(getPositionX())][getT(getPositionY() + speed)] == 1)
+                        yMove = speed;
+                //yMove = speed;
            
             }
 
@@ -112,7 +120,10 @@ namespace rpgGame
             {
                 if (dir == 3) { if (delay == 0) { s++; delay = contDelay; } else delay--; } else s = 0;
                 this.dir = 3;
-                xMove = -speed;
+                if (valid(getPositionX() - speed, getPositionY()))
+                    if (LC.getTiles()[getT(getPositionX() - speed)][getT(getPositionY())] == 1)
+                        xMove = -speed;
+                //xMove = -speed;
                 
             }
 
@@ -121,7 +132,10 @@ namespace rpgGame
             {
                 if (dir == 1) { if (delay == 0) { s++; delay = contDelay; } else delay--; } else s = 0;
                 this.dir = 1;
-                xMove = speed;
+                if (valid(getPositionX() + speed, getPositionY()))
+                    if (LC.getTiles()[getT(getPositionX() + speed)][getT(getPositionY())] == 1)
+                        xMove = speed;
+                //xMove = speed;
                
             }
             if (s == 3) s = 0;
@@ -151,7 +165,7 @@ namespace rpgGame
 
         public void setPositionX(int positionX)
         {
-            if (!(positionX < 0) && !(positionX > 650) && (worldMap.GetWalkableAt(new Point(positionX, positionY)) == true)) //CAMBIAR WALKABLE A LOCAL MAP
+            //if (!(positionX < 0) && !(positionX > 650) && (worldMap.GetWalkableAt(new Point(positionX, positionY)) == true)) //CAMBIAR WALKABLE A LOCAL MAP
                 this.positionX = positionX;
         }
 
@@ -162,7 +176,7 @@ namespace rpgGame
 
         public void setPositionY(int positionY)
         {
-            if (!(positionY < 0) && !(positionY > 455) && worldMap.GetWalkableAt(new Point(positionX, positionY))) 
+            //if (!(positionY < 0) && !(positionY > 455) && worldMap.GetWalkableAt(new Point(positionX, positionY))) 
                 this.positionY = positionY;
         }
 

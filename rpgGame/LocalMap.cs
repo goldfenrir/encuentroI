@@ -29,7 +29,7 @@ namespace rpgGame
         public LocalMap(Form form, Game game /*Player play*/)
         {
 
-            player= new Player(new Point(80, 80), 1);
+            player= new Player(game, new Point(80, 80), 1);
             mapAct = game.getCurrentMap();
         }
 
@@ -49,6 +49,9 @@ namespace rpgGame
             return mapAct;
         }
 
+        public List<Map> getMaps(){
+            return maps;
+        }
 
         /*public void DrawMap(Graphics device)
         {
@@ -72,7 +75,7 @@ namespace rpgGame
             
         }*/
 
-        public bool GetWalkableAt(Point loc)
+        /*public bool GetWalkableAt(Point loc)
         {
             foreach (Tile t in mapTiles)
             {
@@ -108,7 +111,7 @@ namespace rpgGame
                 }
             }
             return true;
-        }
+        }*/
 
         
         public override void Tick()

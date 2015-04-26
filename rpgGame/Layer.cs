@@ -16,15 +16,7 @@ namespace rpgGame
         private int totalX, totalY;
         private int[][] tiles;
         private Bitmap[] gTilePalette;
-        public struct Tile
-        {
-            public Image img;
-            public Point esqSupIzq;
-            public Point esqInfDer;
-            public bool walkable;
-        }
-
-        public List<Tile> mapTiles;
+        //public List<Tile> mapTiles;
 
         public Layer(String path, String dirImg)
         {
@@ -51,11 +43,44 @@ namespace rpgGame
         }
 
         private void loadWorld(String mapName){
-            StreamReader reader = new StreamReader(mapName + ".txt");
-            int y = 0;
+            StreamReader reader = new StreamReader(mapName);
+            //int y = 0;
+            //reader.
             while (!reader.EndOfStream)
             {
-                string line = reader.ReadLine();
+                //reader.ReadLine();
+                string line = "safasdfasasdfasf";
+                line = reader.ReadLine();
+                string[] arr;
+                arr = new string [2];
+                arr = line.Split(' ');
+                width = int.Parse(arr[1]);
+                height = int.Parse(arr[1]);
+                line = reader.ReadLine();
+                arr = line.Split(' ');
+                totalX = int.Parse(arr[0]);
+                totalY = int.Parse(arr[1]);
+
+                tiles = new int[getWidth()][];
+                for (int x = 0; x < tiles.Length; x++)
+                {
+                    tiles[x] = new int[getHeight()];
+                }
+                char[] delim;
+                delim = new char[2];
+                delim[0] = ' ';
+                delim[1] = '\t';
+                string[] arr2;
+                arr2= new string[getWidth()];
+		        for(int y = 0;y < getHeight();y++){
+                    line = reader.ReadLine();
+                    arr2 = line.Split(delim);
+			        for(int x = 0;x < getWidth();x++){
+                        tiles[x][y] = int.Parse(arr2[x]);
+				        //tiles[x][y] = Utils.parseInt(tokens[(x + y * getWidth()) + 4]);//pensar
+			        }
+		        }
+                /*
                 for (int x = 0; x < line.Length; x++)
                 {
                     Tile t = new Tile();
@@ -74,7 +99,7 @@ namespace rpgGame
                     mapTiles.Add(t);
 
                 }
-                y++;
+                y++;*/
             }
 	    }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace rpgGame
 {
-    class Persona
+    class Person
     {
         private int id;
         private String name;

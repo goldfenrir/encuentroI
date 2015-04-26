@@ -130,7 +130,6 @@ namespace rpgGame
 
             //playerParty.Draw(this.device); AGREGAR ESTO EN PLAYER CUANDO LO JALA DE LOCALMAP
 
-
             //monster.Draw(device);
             worldMapSpritePb.Image = imageDevice;
             Thread.Sleep(5);

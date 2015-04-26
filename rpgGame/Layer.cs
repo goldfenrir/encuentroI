@@ -21,17 +21,21 @@ namespace rpgGame
         public Layer(String path, String dirImg)
         {
             loadWorld(path);
-            gTilePalette = SliceImg(dirImg, width, height, totalX, totalY);
+            gTilePalette = SliceImg(dirImg);
         }
 
-        private Bitmap[] SliceImg(String dirImg, int width, int height, int totalX, int totalY)
+        private Bitmap[] SliceImg(String dirImg)
         {
             int cW = (totalX / width);
             int cH = (totalY / height);
             Bitmap[] a = new Bitmap[width * height];
             Image img = new Bitmap(dirImg);
             //Sprite sheet = new Sprite(new Point(0,0), img, 8);
-            Bitmap src = new Bitmap(img);
+            //Bitmap src = new Bitmap(img);
+
+            /*Image croppedImage = new Image();
+            croppedImage.Width = 200;
+            croppedImage.Margin = new Thickness(5);*/
 
             for (int y = 0; y < height; y++)
             {
@@ -39,11 +43,30 @@ namespace rpgGame
                 {
                     //Bitmap src = new Bitmap(img);
 
-                    Bitmap cropped = src.Clone(new Rectangle(x, y, width, height), src.PixelFormat);
-                    a[x + width * y] = cropped;
+                    //Bitmap cropped = src.Clone(new Rectangle(x*cW, y*cH, width, height), src.PixelFormat);
+                    
+                    a[x + width * y] = CropImage(img, new Rectangle(x*cW, y*cH,cW,cH));
                 }
             }
             return a;
+        }
+
+        static Bitmap CropImage(Image originalImage, Rectangle sourceRectangle,
+    Rectangle? destinationRectangle = null)
+        {
+            if (destinationRectangle == null)
+            {
+                destinationRectangle = new Rectangle(Point.Empty, sourceRectangle.Size);
+            }
+
+            var croppedImage = new Bitmap(destinationRectangle.Value.Width,
+                destinationRectangle.Value.Height);
+            using (var graphics = Graphics.FromImage(croppedImage))
+            {
+                graphics.DrawImage(originalImage, destinationRectangle.Value,
+                    sourceRectangle, GraphicsUnit.Pixel);
+            }
+            return croppedImage;
         }
 
         private void loadWorld(String mapName){

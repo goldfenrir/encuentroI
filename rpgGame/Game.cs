@@ -133,6 +133,7 @@ namespace rpgGame
 
             //monster.Draw(device);
             worldMapSpritePb.Image = imageDevice;
+            Thread.Sleep(5);
 
         }
 

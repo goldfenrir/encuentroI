@@ -16,7 +16,7 @@ namespace rpgGame
         public Form1()
         {
             InitializeComponent();
-            game = new Game(this,700,500,"encuentro inesperado");
+            game = new Game(this,800,740,"encuentro inesperado");
             game.Start();
         }
 
@@ -28,6 +28,11 @@ namespace rpgGame
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             KeyManager.HandleKeyUp(e);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

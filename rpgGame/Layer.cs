@@ -26,17 +26,21 @@ namespace rpgGame
 
         private Bitmap[] SliceImg(String dirImg, int width, int height, int totalX, int totalY)
         {
-            int cW = (int)(totalX * 1.0 / width);
-            int cH = (int)(totalY * 1.0 / height);
+            int cW = (totalX / width);
+            int cH = (totalY / height);
             Bitmap[] a = new Bitmap[width * height];
             Image img = new Bitmap(dirImg);
-            Sprite sheet = new Sprite(new Point(0,0), img, 8);
+            //Sprite sheet = new Sprite(new Point(0,0), img, 8);
+            Bitmap src = new Bitmap(img);
 
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
                 {
-                    a[x + width * y] = (Bitmap)sheet.crop(x * cW, y * cH, cW, cH);
+                    //Bitmap src = new Bitmap(img);
+
+                    Bitmap cropped = src.Clone(new Rectangle(x, y, width, height), src.PixelFormat);
+                    a[x + width * y] = cropped;
                 }
             }
             return a;
@@ -46,8 +50,6 @@ namespace rpgGame
             StreamReader reader = new StreamReader(mapName);
             //int y = 0;
             //reader.
-            while (!reader.EndOfStream)
-            {
                 //reader.ReadLine();
                 string line = "safasdfasasdfasf";
                 line = reader.ReadLine();
@@ -71,7 +73,10 @@ namespace rpgGame
                 delim[0] = ' ';
                 delim[1] = '\t';
                 string[] arr2;
-                arr2= new string[getWidth()];
+                int mul = width * height;
+                arr2= new string[width];
+                //line = reader.ReadLine();
+                //arr2 = line.Split(delim);
 		        for(int y = 0;y < getHeight();y++){
                     line = reader.ReadLine();
                     arr2 = line.Split(delim);
@@ -100,7 +105,7 @@ namespace rpgGame
 
                 }
                 y++;*/
-            }
+            
 	    }
 
         public void render(Graphics g)

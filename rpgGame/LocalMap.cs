@@ -53,6 +53,10 @@ namespace rpgGame
             return maps;
         }
 
+        public Player getPlayer(){
+            return player;
+        }
+
         /*public void DrawMap(Graphics device)
         {
             /*for (int x = 0; x < 80; x++)

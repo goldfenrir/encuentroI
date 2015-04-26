@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+using System.Xml;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace rpgGame
 {
@@ -144,6 +148,16 @@ namespace rpgGame
         public Layer getLc()
         {
             return lc;
+        }
+
+        public void saveStateToXml()
+        {
+            Stream stream = File.Open("productos2.xml", FileMode.Create);
+            BinaryFormatter bformatter = new BinaryFormatter();
+
+            Player p = (LocalMap)(stateMachine.PeekState()).getPlayer();
+                bformatter.Serialize(stream, p);
+            stream.Close();
         }
 
     }

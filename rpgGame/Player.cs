@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace rpgGame
 {
@@ -20,7 +22,7 @@ namespace rpgGame
         private int positionY=0;
         private int level;
         private List<Image> sprite;
-        private int pointingDirection;
+        
         private Inventory inventory;
         private List<Item> clues;
         private int width = 35;
@@ -35,6 +37,54 @@ namespace rpgGame
         public Sprite partySprite;
         private Layer LC;
         //private LocalMap worldMap;
+
+        public Player(SerializationInfo info, StreamingContext ctxt)
+        {
+            contDelay = (int)info.GetValue("PlayerContDelay", typeof(int));
+            id = (int)info.GetValue("PlayerId", typeof(int));
+            name = (String)info.GetValue("PlayerName", typeof(String));
+            gender = (int)info.GetValue("PlayerGender", typeof(int));
+            closeNess = (double)info.GetValue("PlayerCloseness", typeof(double));
+            numberOfClues = (int)info.GetValue("PlayerClues", typeof(int));
+            positionX = (int)info.GetValue("PlayerPositionX", typeof(int));
+            positionY = (int)info.GetValue("PlayerPositionY", typeof(int));
+            level = (int)info.GetValue("PlayerLevel", typeof(int));
+        //private List<Image> sprite;
+        //private Inventory inventory; inventario sí
+        //private List<Item> clues; clues también :c
+            width = (int)info.GetValue("PlayerWidth", typeof(int));
+            height = (int)info.GetValue("PlayerHeight", typeof(int));
+            xMove = (int)info.GetValue("PlayerXMove", typeof(int));
+            yMove = (int)info.GetValue("PlayerYMove", typeof(int));
+        //private Game eng;
+            dir = (int)info.GetValue("PlayerDir", typeof(int));
+            s = (int)info.GetValue("PlayerS", typeof(int));
+            delay = (int)info.GetValue("PlayerDelay", typeof(int));
+            speed = (int)info.GetValue("PlayerSpeed", typeof(int));
+        //public Sprite partySprite;
+        //private Layer LC;
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("PlayerContDelay", contDelay);
+            info.AddValue("PlayerId", id);
+            info.AddValue("PlayerName",name);
+            info.AddValue("PlayerGender", gender);
+            info.AddValue("PlayerCloseness", closeNess);
+            info.AddValue("PlayerClues", clues);
+            info.AddValue("PlayerPositionX", positionX);
+            info.AddValue("PlayerPositionY", positionY);
+            info.AddValue("PlayerLevel", level);
+            info.AddValue("PlayerWidth", width);
+            info.AddValue("PlayerHeight", height);
+            info.AddValue("PlayerXMove", xMove);
+            info.AddValue("PlayerYMove", yMove);
+            info.AddValue("PlayerDir", dir);
+            info.AddValue("PlayerS", s);
+            info.AddValue("PlayerDelay", delay);
+            info.AddValue("PlayerSpeed", speed);
+        }
         public Player(Game game, Point location, int id)
         {
             LC = game.getLc();

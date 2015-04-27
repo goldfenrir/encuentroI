@@ -105,7 +105,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::rpgGame.Properties.Resources.zoo2;
+            this.pictureBox1.Image = new System.Drawing.Bitmap("zoo.jpg");
             this.pictureBox1.Location = new System.Drawing.Point(1, -24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(402, 391);

@@ -10,7 +10,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace rpgGame
 {
-    class Player : Person 
+    [Serializable()]
+    class Player : Person, ISerializable 
     {
         private int contDelay = 5;
         private int id;
@@ -61,6 +62,7 @@ namespace rpgGame
             s = (int)info.GetValue("PlayerS", typeof(int));
             delay = (int)info.GetValue("PlayerDelay", typeof(int));
             speed = (int)info.GetValue("PlayerSpeed", typeof(int));
+            inventory = (Inventory)info.GetValue("PlayerInventory", typeof(Inventory));
         //public Sprite partySprite;
         //private Layer LC;
         }
@@ -84,6 +86,7 @@ namespace rpgGame
             info.AddValue("PlayerS", s);
             info.AddValue("PlayerDelay", delay);
             info.AddValue("PlayerSpeed", speed);
+            info.AddValue("PlayerInventory", inventory);
         }
         public Player(Game game, Point location, int id)
         {

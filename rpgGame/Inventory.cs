@@ -3,14 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace rpgGame
 {
-    class Inventory
+    [Serializable()]
+    class Inventory: ISerializable
     {
         List<Item> items;
         private int quantity;
         private int capacity;
+
+        public Inventory(SerializationInfo info, StreamingContext ctxt)
+        {
+            quantity = (int)info.GetValue("InventoryQuantity", typeof(int));
+            capacity = (int)info.GetValue("InventoryCapacity", typeof(int));
+            items = (List<Item>)info.GetValue("InventoryItems", typeof(List<Item>));
+
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("InventoryQuantity", quantity);
+            info.AddValue("InventoryCapacity", capacity);
+            info.AddValue("InventoryItems", items);
+
+        }
 
         public void addItem(int itemId)
         {

@@ -21,6 +21,11 @@ namespace rpgGame
         {
 
         }
+
+        public override void saveToXml(System.IO.Stream stream, System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf)
+        {
+            throw new NotImplementedException();
+        }
         public void onEnter()
         {
 

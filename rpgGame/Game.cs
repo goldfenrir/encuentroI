@@ -155,8 +155,8 @@ namespace rpgGame
             Stream stream = File.Open("productos2.xml", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
 
-            Player p = (LocalMap)(stateMachine.PeekState()).getPlayer();
-                bformatter.Serialize(stream, p);
+            stateMachine.PeekState().saveToXml(stream, bformatter);
+                //bformatter.Serialize(stream, p);
             stream.Close();
         }
 

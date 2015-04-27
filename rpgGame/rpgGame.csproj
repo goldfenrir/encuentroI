@@ -60,6 +60,12 @@
     <Compile Include="KeyManager.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="MainMenu.cs" />
+    <Compile Include="MainMenuG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenuG.Designer.cs">
+      <DependentUpon>MainMenuG.cs</DependentUpon>
+    </Compile>
     <Compile Include="Map.cs" />
     <Compile Include="MiniGame.cs" />
     <Compile Include="Person.cs" />
@@ -74,6 +80,9 @@
     <Compile Include="WorldMap.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenuG.resx">
+      <DependentUpon>MainMenuG.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -118,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\piso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\zoo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\zoo2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

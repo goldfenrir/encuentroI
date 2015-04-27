@@ -91,15 +91,19 @@ namespace rpgGame.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0001100000
-        ///0000000000
-        ///0000000000
-        ///1100000000
-        ///1100000000
-        ///1100000000
-        ///1100000000
-        ///1100000000
-        ///1100000000.
+        ///   Looks up a localized string similar to 000110000000000001
+        ///000000000000000001
+        ///000000000000000001
+        ///110000000001000001
+        ///110000000011000001
+        ///110000000011000001
+        ///110000000011000011
+        ///110000000011000011
+        ///110000000000000011
+        ///000000000000000011
+        ///111111111111111111
+        ///111111111111111111
+        ///111111111111111111.
         /// </summary>
         internal static string Map {
             get {
@@ -183,6 +187,26 @@ namespace rpgGame.Properties {
         internal static System.Drawing.Bitmap piso1 {
             get {
                 object obj = ResourceManager.GetObject("piso1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zoo {
+            get {
+                object obj = ResourceManager.GetObject("zoo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zoo2 {
+            get {
+                object obj = ResourceManager.GetObject("zoo2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

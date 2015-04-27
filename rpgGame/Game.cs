@@ -150,7 +150,7 @@ namespace rpgGame
             return lc;
         }
 
-        public void saveStateToXml()
+        /*public void saveStateToXml()
         {
             Stream stream = File.Open("productos2.xml", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
@@ -159,6 +159,7 @@ namespace rpgGame
                 bformatter.Serialize(stream, p);
             stream.Close();
         }
+         */
 
     }
 

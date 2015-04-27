@@ -152,14 +152,23 @@ namespace rpgGame
 
         /*public void saveStateToXml()
         {
-            Stream stream = File.Open("productos2.xml", FileMode.Create);
+            Stream stream = File.Open("savedState.xml", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
 
-            Player p = (LocalMap)(stateMachine.PeekState()).getPlayer();
-                bformatter.Serialize(stream, p);
+            stateMachine.PeekState().saveToXml(stream, bformatter);
+                //bformatter.Serialize(stream, p);
             stream.Close();
         }
          */
+
+        public void loadStateFromXml()
+        {
+            Stream stream = File.Open("savedState.xml", FileMode.Create);
+            BinaryFormatter bformatter = new BinaryFormatter();
+            stateMachine.PeekState().loadFromXml(stream, bformatter);
+            stream.Close();
+
+        }
 
     }
 

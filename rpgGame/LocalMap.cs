@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace rpgGame
 {
-    class LocalMap : State
+    [Serializable()]
+    class LocalMap : State, ISerializable
     {
         private Map map;
         private List<Map> maps = new List<Map>();
@@ -17,15 +20,17 @@ namespace rpgGame
         private List<Friend> friends;
         private int mapAct;
         
-        /*public struct Tile
+        public LocalMap(SerializationInfo info, StreamingContext ctxt)
         {
-            public Image img;
-            public Point esqSupIzq;
-            public Point esqInfDer;
-            public bool walkable;
-        }*/
-        //private List<PictureBox> tiles;
-        //public List<Tile> mapTiles;
+            mapAct = (int)info.GetValue("LMMapAct", typeof(int));
+
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("LMMapAct", mapAct);
+
+        }
         public LocalMap(Form form, Game game /*Player play*/)
         {
 
@@ -44,6 +49,19 @@ namespace rpgGame
             player.Draw(dv);
         }
 
+        public override void saveToXml(Stream stream, BinaryFormatter bf)
+        {
+            bf.Serialize(stream, this);
+            bf.Serialize(stream, player);
+        }
+
+        public override void loadFromXml(Stream stream, BinaryFormatter bf)
+        {
+            LocalMap lm = (LocalMap)bf.Deserialize(stream);
+            this.mapAct = lm.mapAct;
+            player = (Player)bf.Deserialize(stream);
+        }
+
         public int getMapAct()
         {
             return mapAct;
@@ -57,65 +75,7 @@ namespace rpgGame
             return player;
         }
 
-        /*public void DrawMap(Graphics device)
-        {
-            /*for (int x = 0; x < 80; x++)
-                for (int y = 0; y < 80; y++)
-                {
-                    //Pen pen = new Pen(Color.Transparent);
-                    //Bitmap bmp = new Bitmap("background.jpg");
-                    //device.DrawRectangle(pen, x * 10, y * 10, 10, 10);
-                }
-            //Image img = Image.FromFile("background.jpg");
-            //device.DrawImage(img, 0, 0);  
-            foreach (Tile t in mapTiles)
-            {
-                device.DrawImage(t.img, t.esqSupIzq);
-            }
-        }*/
-        
-        /*public void LoadMap(String mapName)
-        {
-            
-        }*/
-
-        /*public bool GetWalkableAt(Point loc)
-        {
-            foreach (Tile t in mapTiles)
-            {
-                int w = player.GetWidth();
-                int h = player.GetHeight();
-                //verificacion esquina sup izq del personaje
-                if ((loc.X >= t.esqSupIzq.X) && (loc.X <= t.esqInfDer.X) && (loc.Y >= t.esqSupIzq.Y) && (loc.Y <= t.esqInfDer.Y))
-                {
-                            if (!t.walkable)
-                                return false;
-                                            
-                }
-                // esquina sup der del pers
-                if ((loc.X+w >= t.esqSupIzq.X) && (loc.X+w <= t.esqInfDer.X) && (loc.Y >= t.esqSupIzq.Y) && (loc.Y <= t.esqInfDer.Y))
-                {
-                    if (!t.walkable)
-                        return false;
-
-                }
-                // esquina inferior izq
-                if ((loc.X >= t.esqSupIzq.X) && (loc.X <= t.esqInfDer.X) && (loc.Y+h >= t.esqSupIzq.Y) && (loc.Y+h <= t.esqInfDer.Y))
-                {
-                    if (!t.walkable)
-                        return false;
-
-                }
-                //esquina inferio der
-                if ((loc.X+w >= t.esqSupIzq.X) && (loc.X+w <= t.esqInfDer.X) && (loc.Y+h >= t.esqSupIzq.Y) && (loc.Y+h <= t.esqInfDer.Y))
-                {
-                    if (!t.walkable)
-                        return false;
-
-                }
-            }
-            return true;
-        }*/
+    
 
         
         public override void Tick()

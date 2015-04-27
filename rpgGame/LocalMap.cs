@@ -55,6 +55,13 @@ namespace rpgGame
             bf.Serialize(stream, player);
         }
 
+        public override void loadFromXml(Stream stream, BinaryFormatter bf)
+        {
+            LocalMap lm = (LocalMap)bf.Deserialize(stream);
+            this.mapAct = lm.mapAct;
+            player = (Player)bf.Deserialize(stream);
+        }
+
         public int getMapAct()
         {
             return mapAct;

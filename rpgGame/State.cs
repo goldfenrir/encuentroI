@@ -15,6 +15,8 @@ namespace rpgGame
     {
         public abstract void Draw(Graphics dev);
         public abstract void saveToXml(Stream stream, BinaryFormatter bf );
+
+        public abstract void loadFromXml(Stream stream, BinaryFormatter bf);
         public void update()
         {
 

@@ -14,6 +14,10 @@ namespace rpgGame
         private List<String> options = new List<String>();
         private int posY;
 
+        public override void loadFromXml(System.IO.Stream stream, System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf)
+        {
+            throw new NotImplementedException();
+        }
         public override void Draw(Graphics dv)
         {
 

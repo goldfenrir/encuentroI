@@ -13,6 +13,10 @@ namespace rpgGame
         private int id;
         private Object game;
 
+        public override void loadFromXml(System.IO.Stream stream, System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf)
+        {
+            throw new NotImplementedException();
+        }
         public override void Draw(Graphics dv)
         {
 

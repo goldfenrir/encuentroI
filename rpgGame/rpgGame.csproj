@@ -160,6 +160,8 @@
     <Content Include="bin\Debug\l1.txt" />
     <Content Include="bin\Debug\lc1.png" />
     <Content Include="bin\Debug\lc1.txt" />
+    <Content Include="bin\Debug\zoo.jpg" />
+    <Content Include="bin\Debug\zoo2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

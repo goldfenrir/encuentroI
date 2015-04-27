@@ -31,7 +31,6 @@ namespace rpgGame
         private Layer lc;
         //Actual map
         private int currentMap = 0;
-
         public Game(Form form, int w, int h, String title)
         {
             this.title = title;

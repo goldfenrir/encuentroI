@@ -154,22 +154,22 @@
   <data name="piso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\piso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="l1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\l1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="l11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\l1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="lc1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\lc1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lc11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\lc1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="zoo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\zoo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="zoo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\zoo2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="l1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\l1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="l11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\l1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="lc1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lc1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lc11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lc1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

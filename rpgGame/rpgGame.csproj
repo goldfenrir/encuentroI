@@ -134,6 +134,12 @@
   <ItemGroup>
     <None Include="bin\Debug\zoo2.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\l1.png" />
+    <Content Include="bin\Debug\l1.txt" />
+    <Content Include="bin\Debug\lc1.png" />
+    <Content Include="bin\Debug\lc1.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

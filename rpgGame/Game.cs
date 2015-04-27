@@ -109,7 +109,7 @@ namespace rpgGame
 				delta--;
 			}
 			
-			if(timer >= 1000000000){
+			if(timer >= 1300000000){
 				Console.WriteLine("Ticks and Frames: " + ticks);
 				ticks = 0;
 				timer = 0;
@@ -135,7 +135,7 @@ namespace rpgGame
 
             //monster.Draw(device);
             worldMapSpritePb.Image = imageDevice;
-            Thread.Sleep(5);
+            Thread.Sleep(4);
 
         }
 

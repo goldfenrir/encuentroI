@@ -68,6 +68,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCredits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCredits.Designer.cs">
+      <DependentUpon>FormCredits.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="WorldMap.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCredits.resx">
+      <DependentUpon>FormCredits.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDatos.resx">
       <DependentUpon>FormDatos.cs</DependentUpon>
@@ -171,11 +180,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\cecilia.png" />
     <Content Include="bin\Debug\Converted_file_0977ff77.ico" />
+    <None Include="bin\Debug\diego.png" />
     <Content Include="bin\Debug\l1.png" />
     <Content Include="bin\Debug\l1.txt" />
     <Content Include="bin\Debug\lc1.png" />
     <Content Include="bin\Debug\lc1.txt" />
+    <None Include="bin\Debug\nilton.png" />
+    <None Include="bin\Debug\raul.png" />
     <Content Include="bin\Debug\zoo.jpg" />
     <Content Include="bin\Debug\zoo2.jpg" />
     <Content Include="bin\Debug\zoofinal.jpg" />

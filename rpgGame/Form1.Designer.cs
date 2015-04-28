@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label_game = new System.Windows.Forms.Label();
             this.but_start = new System.Windows.Forms.Button();
             this.but_options = new System.Windows.Forms.Button();
             this.but_car = new System.Windows.Forms.Button();
             this.but_scores = new System.Windows.Forms.Button();
             this.but_credits = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label_game
@@ -101,21 +100,14 @@
             this.but_credits.TabIndex = 6;
             this.but_credits.Text = "Credits";
             this.but_credits.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::rpgGame.Properties.Resources.zoofinal;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(679, 463);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.but_credits.Click += new System.EventHandler(this.but_credits_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(684, 462);
             this.Controls.Add(this.but_credits);
             this.Controls.Add(this.but_scores);
@@ -123,13 +115,11 @@
             this.Controls.Add(this.but_options);
             this.Controls.Add(this.but_start);
             this.Controls.Add(this.label_game);
-            this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "RPG GAME";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,7 +133,6 @@
         private System.Windows.Forms.Button but_car;
         private System.Windows.Forms.Button but_scores;
         private System.Windows.Forms.Button but_credits;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

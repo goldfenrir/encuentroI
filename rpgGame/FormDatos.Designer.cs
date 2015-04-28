@@ -42,6 +42,7 @@
             // label_name
             // 
             this.label_name.AutoSize = true;
+            this.label_name.BackColor = System.Drawing.Color.Khaki;
             this.label_name.Location = new System.Drawing.Point(13, 28);
             this.label_name.Name = "label_name";
             this.label_name.Size = new System.Drawing.Size(35, 13);
@@ -60,9 +61,9 @@
             // 
             this.gBox_gender.Controls.Add(this.radio_female);
             this.gBox_gender.Controls.Add(this.radio_male);
-            this.gBox_gender.Location = new System.Drawing.Point(16, 70);
+            this.gBox_gender.Location = new System.Drawing.Point(16, 75);
             this.gBox_gender.Name = "gBox_gender";
-            this.gBox_gender.Size = new System.Drawing.Size(154, 71);
+            this.gBox_gender.Size = new System.Drawing.Size(220, 71);
             this.gBox_gender.TabIndex = 2;
             this.gBox_gender.TabStop = false;
             this.gBox_gender.Text = "Gender";
@@ -70,7 +71,7 @@
             // radio_female
             // 
             this.radio_female.AutoSize = true;
-            this.radio_female.Location = new System.Drawing.Point(79, 32);
+            this.radio_female.Location = new System.Drawing.Point(135, 32);
             this.radio_female.Name = "radio_female";
             this.radio_female.Size = new System.Drawing.Size(59, 17);
             this.radio_female.TabIndex = 1;
@@ -81,7 +82,7 @@
             // radio_male
             // 
             this.radio_male.AutoSize = true;
-            this.radio_male.Location = new System.Drawing.Point(6, 32);
+            this.radio_male.Location = new System.Drawing.Point(37, 32);
             this.radio_male.Name = "radio_male";
             this.radio_male.Size = new System.Drawing.Size(48, 17);
             this.radio_male.TabIndex = 0;
@@ -102,13 +103,13 @@
             "Rabbit"});
             this.combo_animals.Location = new System.Drawing.Point(22, 196);
             this.combo_animals.Name = "combo_animals";
-            this.combo_animals.Size = new System.Drawing.Size(121, 21);
+            this.combo_animals.Size = new System.Drawing.Size(214, 21);
             this.combo_animals.TabIndex = 3;
             // 
             // label_Animal
             // 
             this.label_Animal.AutoSize = true;
-            this.label_Animal.Location = new System.Drawing.Point(22, 177);
+            this.label_Animal.Location = new System.Drawing.Point(22, 180);
             this.label_Animal.Name = "label_Animal";
             this.label_Animal.Size = new System.Drawing.Size(79, 13);
             this.label_Animal.TabIndex = 4;
@@ -117,7 +118,8 @@
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(22, 241);
+            this.button_save.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.button_save.Location = new System.Drawing.Point(84, 239);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(96, 38);
             this.button_save.TabIndex = 5;
@@ -129,6 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(274, 303);
             this.Controls.Add(this.button_save);
             this.Controls.Add(this.label_Animal);

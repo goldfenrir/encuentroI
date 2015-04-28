@@ -56,17 +56,23 @@ namespace rpgGame
             this.but_options.Visible = false;
             this.label_game.Visible = false;
             this.but_scores.Visible = false;
-            this.pictureBox1.Visible = false;
+            //this.pictureBox1.Visible = false;
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
+        /*private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
-
+        */
         private void but_car_Click(object sender, EventArgs e)
         {
             dataPlayer = new FormDatos();
             dataPlayer.Show();
+        }
+
+        private void but_credits_Click(object sender, EventArgs e)
+        {
+            FormCredits creditos = new FormCredits();
+            creditos.Show();
         }
     }
 }

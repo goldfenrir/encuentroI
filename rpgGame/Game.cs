@@ -52,6 +52,7 @@ namespace rpgGame
             worldMapSpritePb.Height = gameForm.Height;
             worldMapSpritePb.BackColor = Color.Green;
             worldMapSpritePb.Parent = gameForm;
+            //worldMapSpritePb.Size
             
             //LocalMap localMap = new LocalMap(gameForm, this);
             //playerParty.agregarWM(localMap);//esto va dentrode worldmap
@@ -135,7 +136,7 @@ namespace rpgGame
 
             //monster.Draw(device);
             worldMapSpritePb.Image = imageDevice;
-            Thread.Sleep(4);
+            Thread.Sleep(20);
 
         }
 

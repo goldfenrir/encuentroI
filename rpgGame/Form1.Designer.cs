@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label_game = new System.Windows.Forms.Label();
             this.but_start = new System.Windows.Forms.Button();
             this.but_options = new System.Windows.Forms.Button();
@@ -105,7 +104,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::rpgGame.Properties.Resources.zoofinal;
             this.pictureBox1.Location = new System.Drawing.Point(1, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(679, 463);
@@ -125,7 +124,6 @@
             this.Controls.Add(this.but_start);
             this.Controls.Add(this.label_game);
             this.Controls.Add(this.pictureBox1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "RPG GAME";
             this.Load += new System.EventHandler(this.Form1_Load);

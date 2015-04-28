@@ -127,14 +127,23 @@ namespace rpgGame
             worldMapSpritePb.BackColor = Color.Green;
             worldMapSpritePb.Parent = gameForm;
             LocalMap lmtemp = (LocalMap)gameTemp.stateMachine.PeekState();
-            LocalMap LMS = new LocalMap(gameForm, this);
-            foreach(Map m in lmtemp.getMaps()){
-                string [] paths = m.Paths;
-                string [] dirImg = m.DirImg;
+            //LocalMap LMS = new LocalMap(gameForm, this);
+            List<Map> mapList = new List<Map>();
+            Console.WriteLine("cantidad de mapas : " + lmtemp.getMaps().Count);
+            for (int i = 0; i < lmtemp.getMaps().Count; i++ )
+            {
+                Map m = lmtemp.getMaps()[i];
+                Console.WriteLine("cantidad de layers : " + m.NumLayers);
+                string[] paths = m.Paths;
+                string[] dirImg = m.DirImg;
                 Map map = new Map(this, m.NumLayers, paths, dirImg);//eng, cant layer, paths2, iamgeleyer
-                lc = map.getLC();
-                LMS.getMaps().Add(map);
+                //this.lc = map.getLC();
+                mapList.Add(map);
             }
+            this.lc = mapList[currentMap].getLC();
+            LocalMap LMS = new LocalMap(gameForm, this);
+            foreach (Map m in mapList)
+                LMS.getMaps().Add(m);
             stateMachine = new StateMachine();
             stateMachine.AddState(LMS);
             stream.Close();
@@ -213,7 +222,7 @@ namespace rpgGame
 
         public Layer getLc()
         {
-            return lc;
+            return this.lc;
         }
 
         /*public void saveStateToXml()
@@ -224,8 +233,8 @@ namespace rpgGame
             stateMachine.PeekState().saveToXml(stream, bformatter);
                 //bformatter.Serialize(stream, p);
             stream.Close();
-        }
-         */
+        }*/
+         
 
       
 

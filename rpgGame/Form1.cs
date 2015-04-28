@@ -13,11 +13,11 @@ namespace rpgGame
     public partial class Form1 : Form
     {
         Game game;
+        public FormDatos dataPlayer;
         public Form1()
         {
             InitializeComponent();
-            game = new Game(this,800,740,"encuentro inesperado");
-            game.Start();
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -33,6 +33,40 @@ namespace rpgGame
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void but_start_Click(object sender, EventArgs e)
+        {
+
+            game = new Game(this, 800, 740, "encuentro inesperado");
+            game.Start();
+            hideLayer();
+
+        }
+        private void hideLayer()
+        {
+            this.but_car.Enabled = false;
+            this.but_credits.Enabled = false;
+            this.but_options.Enabled = false;
+            this.but_scores.Enabled = false;
+            this.but_start.Enabled = false;
+            this.but_car.Visible = false;
+            this.but_start.Visible = false;
+            this.but_credits.Visible = false;
+            this.but_options.Visible = false;
+            this.label_game.Visible = false;
+            this.but_scores.Visible = false;
+            this.pictureBox1.Visible = false;
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void but_car_Click(object sender, EventArgs e)
+        {
+            dataPlayer = new FormDatos();
+            dataPlayer.Show();
         }
     }
 }

@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace rpgGame
 {
-    class Layer
+   
+    class Layer 
     {
         private int id;
         private int width, height;
@@ -17,6 +20,8 @@ namespace rpgGame
         private int[][] tiles;
         private Bitmap[] gTilePalette;
         //public List<Tile> mapTiles;
+
+
 
         public Layer(String path, String dirImg)
         {

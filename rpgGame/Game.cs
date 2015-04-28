@@ -13,7 +13,8 @@ using System.Runtime.Serialization;
 
 namespace rpgGame
 {
-    class Game 
+    [Serializable()]
+    class Game : ISerializable
     {
         private String title;
         private int width, height;
@@ -31,9 +32,29 @@ namespace rpgGame
         private Layer lc;
         //Actual map
         private int currentMap = 0;
+
+        public Game(SerializationInfo info, StreamingContext ctxt)
+        {
+            title = (String)info.GetValue("GameTitle", typeof(String));
+            width = (int)info.GetValue("GameWidth", typeof(int));
+            height = (int)info.GetValue("GameHeight", typeof(int));
+            //lc = (int)info.GetValue("PlayerHeight", typeof(int));
+            currentMap = (int)info.GetValue("GameCurrMap", typeof(int));
+            stateMachine = (StateMachine)info.GetValue("GameStateMachine", typeof(StateMachine));
+
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("GameTitle", title);
+            info.AddValue("GameWidth", width);
+            info.AddValue("GameHeight", height);
+            info.AddValue("GameCurrMap", currentMap);
+            info.AddValue("GameStateMachine", stateMachine);
+        }
         public Game(Form form, int w, int h, String title)
         {
-            this.title = title;
+            /*this.title = title;
             this.width = w;
             this.height = h;
             gameForm = form;
@@ -52,13 +73,7 @@ namespace rpgGame
             worldMapSpritePb.Height = gameForm.Height;
             worldMapSpritePb.BackColor = Color.Green;
             worldMapSpritePb.Parent = gameForm;
-            //worldMapSpritePb.Size
-            
-            //LocalMap localMap = new LocalMap(gameForm, this);
-            //playerParty.agregarWM(localMap);//esto va dentrode worldmap
-            // crear el state machine
             String[] paths = new String[2];
-            //        String s=new File("a.txt").getAbsolutePath();
             paths[0] = "l1.txt";
 
             paths[1] = "lc1.txt";
@@ -71,10 +86,61 @@ namespace rpgGame
             LMS.getMaps().Add(map);
             stateMachine = new StateMachine();
             stateMachine.AddState(LMS);
-
+            saveToXml();*/
+            loadFromXml(form);
             //Draw();
             
         }
+
+        public void saveToXml()
+        {
+            Stream stream = File.Open("initialState.xml", FileMode.Create);
+            BinaryFormatter bformatter = new BinaryFormatter();
+            bformatter.Serialize(stream, this);
+            stream.Close();
+        }
+
+        public void loadFromXml(Form form)
+        {
+            Stream stream = File.Open("initialState.xml", FileMode.OpenOrCreate);
+            BinaryFormatter bformatter = new BinaryFormatter();
+            Game gameTemp = (Game)bformatter.Deserialize(stream);
+            title = gameTemp.title;
+            width = gameTemp.width;
+            height = gameTemp.height;
+            currentMap = gameTemp.currentMap;
+
+            gameForm = form;
+            // se inicializa el form
+            gameForm.Width = width;
+            gameForm.Height = height;
+            gameForm.Text = title;
+            gameForm.BackColor = Color.White;
+
+            imageDevice = new Bitmap(gameForm.Width, gameForm.Height);
+            device = Graphics.FromImage(imageDevice);
+
+            //se inicializa el bg
+            worldMapSpritePb = new PictureBox();
+            worldMapSpritePb.Width = gameForm.Width;
+            worldMapSpritePb.Height = gameForm.Height;
+            worldMapSpritePb.BackColor = Color.Green;
+            worldMapSpritePb.Parent = gameForm;
+            LocalMap lmtemp = (LocalMap)gameTemp.stateMachine.PeekState();
+            LocalMap LMS = new LocalMap(gameForm, this);
+            foreach(Map m in lmtemp.getMaps()){
+                string [] paths = m.Paths;
+                string [] dirImg = m.DirImg;
+                Map map = new Map(this, m.NumLayers, paths, dirImg);//eng, cant layer, paths2, iamgeleyer
+                lc = map.getLC();
+                LMS.getMaps().Add(map);
+            }
+            stateMachine = new StateMachine();
+            stateMachine.AddState(LMS);
+            stream.Close();
+        }
+
+        
 
         public void Start()
         {
@@ -161,14 +227,7 @@ namespace rpgGame
         }
          */
 
-        public void loadStateFromXml()
-        {
-            Stream stream = File.Open("savedState.xml", FileMode.Create);
-            BinaryFormatter bformatter = new BinaryFormatter();
-            stateMachine.PeekState().loadFromXml(stream, bformatter);
-            stream.Close();
-
-        }
+      
 
     }
 

@@ -18,16 +18,25 @@ namespace rpgGame
         private List<Map> maps = new List<Map>();
         private Player player;
         private List<Friend> friends;
+        private int numMaps;
         private int mapAct;
         
         public LocalMap(SerializationInfo info, StreamingContext ctxt)
         {
+            //map = (Map)info.GetValue("LMMap", typeof(Map));
+            numMaps = (int)info.GetValue("LMNumMaps", typeof(int));
+            maps = (List<Map>)info.GetValue("LMMaps", typeof(List<Map>));
+            //player = (Player)info.GetValue("LMPlayer", typeof(Player));
             mapAct = (int)info.GetValue("LMMapAct", typeof(int));
 
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
+            //info.AddValue("LMMap", map);
+            info.AddValue("LMNumMaps", numMaps);
+            info.AddValue("LMMaps", maps);
+            //info.AddValue("LMPlayer", player);
             info.AddValue("LMMapAct", mapAct);
 
         }

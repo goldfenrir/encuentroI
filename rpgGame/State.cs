@@ -11,8 +11,23 @@ using System.Runtime.Serialization;
 
 namespace rpgGame
 {
-    abstract class State
+   
+    [Serializable()]
+    abstract class State : ISerializable
     {
+        public State()
+        {
+
+        }
+        public State(SerializationInfo info, StreamingContext ctxt)
+        {
+
+        }
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+
+        }
+
         public abstract void Draw(Graphics dev);
         public abstract void saveToXml(Stream stream, BinaryFormatter bf );
 

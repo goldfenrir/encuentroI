@@ -13,7 +13,7 @@ namespace rpgGame
         //protected Stack<SubMenu> subMenus;
         
         protected List<String> options;
-        // private Selector sel;
+        private Selector sel;
         private List<Button> buttons;
         private int space=100;
         private String title="Nido Nuevo, Amigos Nuevos!";
@@ -34,7 +34,7 @@ namespace rpgGame
             //fntT = new Font("Comic Sans MS", Font.BOLD, fontSizeT);
             options.Add("SAVE");
             options.Add("SALIR");
-            //sel = new Selector(x - widthB, y, widthB, heightB, space, 2);
+            sel = new Selector(x - widthB, y, widthB, heightB, space, 2);
             Button but1 = new Button();
             but1.Text = options[0];
             but1.Location = new Point(x,y);
@@ -48,7 +48,7 @@ namespace rpgGame
             buttons.Add(but1);
             buttons.Add(but2);
             this.eng = eng;
-            background = new Bitmap("bgF.jpg");
+            background = new Bitmap("zoo2.jpg");
            // background = ImageLoader.loadImage("/img/bgF.jpg");
         }
 
@@ -83,7 +83,27 @@ namespace rpgGame
     }
         public override void Draw(Graphics dv)
         {
+            dv.DrawImage(background, 0, 0, 800, 700);
+            //g.drawImage(background, 0, 0, 800, 700, null);
+            /*for (int i = 0; i < buttons.Count; i++)
+            {
+                buttons[i].render(g);
 
+            }*/
+            sel.render(dv);   
+
+        }
+
+        public override void Tick()
+        {
+            if (KeyManager.down)
+            {
+                sel.down();
+            }
+            if (KeyManager.up)
+            {
+                sel.up();
+            }
         }
         public void update()
         {

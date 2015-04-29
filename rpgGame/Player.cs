@@ -281,7 +281,7 @@ namespace rpgGame
             if (KeyManager.menu)
             {
                 InGameMenu inGameM = new InGameMenu(eng);
-                //eng.getSM().AddState(inGameM);
+                eng.getSM().AddState(inGameM);
             }
             if (s == 3) s = 0;
 

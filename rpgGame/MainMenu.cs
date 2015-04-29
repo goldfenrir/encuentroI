@@ -68,9 +68,9 @@ namespace rpgGame
         {
             if (sel.getOpt() == 1)
             {
-                FormDatos dataPlayer = new FormDatos();
-                dataPlayer.Show();
-                //eng.getSM().PopState();
+                //FormDatos dataPlayer = new FormDatos(); ARREGLAR ESTO!
+                //dataPlayer.Show();
+
                 return true;
             }
 

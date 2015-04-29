@@ -253,9 +253,7 @@ namespace rpgGame
             //string namefile = "savedState" + num.ToString() + ".bin";
             Stream stream = File.Open("savedState.bin", FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
-
             LocalMap lm = (LocalMap)stateMachine.PopState();
-
             LocalMap lmtemp = (LocalMap)bf.Deserialize(stream);
              lm.MapAct = lmtemp.MapAct;
             Player playerTemp = (Player)bf.Deserialize(stream);

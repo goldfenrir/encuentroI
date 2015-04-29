@@ -35,10 +35,6 @@
             this.but_car = new System.Windows.Forms.Button();
             this.but_scores = new System.Windows.Forms.Button();
             this.but_credits = new System.Windows.Forms.Button();
-            this.pic_save = new System.Windows.Forms.PictureBox();
-            this.pic_load = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_save)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_load)).BeginInit();
             this.SuspendLayout();
             // 
             // label_game
@@ -106,24 +102,6 @@
             this.but_credits.UseVisualStyleBackColor = true;
             this.but_credits.Click += new System.EventHandler(this.but_credits_Click);
             // 
-            // pic_save
-            // 
-            this.pic_save.Location = new System.Drawing.Point(12, 12);
-            this.pic_save.Name = "pic_save";
-            this.pic_save.Size = new System.Drawing.Size(54, 21);
-            this.pic_save.TabIndex = 7;
-            this.pic_save.TabStop = false;
-            this.pic_save.Click += new System.EventHandler(this.pic_save_Click);
-            // 
-            // pic_load
-            // 
-            this.pic_load.Location = new System.Drawing.Point(12, 51);
-            this.pic_load.Name = "pic_load";
-            this.pic_load.Size = new System.Drawing.Size(54, 21);
-            this.pic_load.TabIndex = 8;
-            this.pic_load.TabStop = false;
-            this.pic_load.Click += new System.EventHandler(this.pic_load_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,8 +109,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(684, 462);
-            this.Controls.Add(this.pic_load);
-            this.Controls.Add(this.pic_save);
             this.Controls.Add(this.but_credits);
             this.Controls.Add(this.but_scores);
             this.Controls.Add(this.but_car);
@@ -144,8 +120,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.pic_save)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_load)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,8 +133,6 @@
         private System.Windows.Forms.Button but_car;
         private System.Windows.Forms.Button but_scores;
         private System.Windows.Forms.Button but_credits;
-        private System.Windows.Forms.PictureBox pic_save;
-        private System.Windows.Forms.PictureBox pic_load;
     }
 }
 

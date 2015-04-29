@@ -16,7 +16,7 @@ namespace rpgGame
     private int x,y,w,h;
     private Font fnt0;
     private String title;
-    private int fontSize=50; //leer xml
+    private int fontSize=40; //leer xml
      //cantidad de sprites
     public GButton(String title,int x,int y,int w,int h){
         this.title=title;
@@ -34,7 +34,7 @@ namespace rpgGame
             
         }
         
-        fnt0 =new Font(FontFamily.Families[5],fontSize);
+        fnt0 =new Font(FontFamily.Families[10],fontSize);
         
     }
     public void render(Graphics g){

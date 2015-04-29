@@ -70,6 +70,8 @@ namespace rpgGame
             {
                 FormDatos dataPlayer = new FormDatos();
                 dataPlayer.Show();
+                //eng.getSM().PopState();
+                return true;
             }
 
             if (sel.getOpt() == 2)
@@ -85,9 +87,6 @@ namespace rpgGame
                 //                lgDialog.setVisible(true);
                 eng.getSM().PopState();
                 eng.loadStateToBin();
-
-                
-
             }
         }
        /*

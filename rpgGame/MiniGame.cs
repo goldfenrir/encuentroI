@@ -39,6 +39,11 @@ namespace rpgGame
 
         }
 
+        public override bool ordenPop()
+        {
+            throw new NotImplementedException();
+        }
+
         /**
          * @return the id
          */

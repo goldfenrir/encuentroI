@@ -122,5 +122,10 @@ namespace rpgGame
             }
             
         }
+
+        public override bool ordenPop()
+        {
+            return false;
+        }
     }
 }

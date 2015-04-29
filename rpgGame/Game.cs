@@ -199,7 +199,13 @@ namespace rpgGame
         public void Tick()
         {
             KeyManager.Tick();
-            stateMachine.PeekState().Tick();
+            if (stateMachine.PeekState().ordenPop())
+                getSM().PopState();
+            if (stateMachine.getState().Count!=0)
+            {
+                stateMachine.PeekState().Tick();
+            }
+            //stateMachine.PeekState().Tick();
         }
 
         void Draw()
@@ -212,7 +218,7 @@ namespace rpgGame
 
             //monster.Draw(device);
             worldMapSpritePb.Image = imageDevice;
-            Thread.Sleep(20);
+            Thread.Sleep(5);
 
         }
 
@@ -231,13 +237,14 @@ namespace rpgGame
             //string namefile = "savedState" + num.ToString() + ".bin";
             Stream stream = File.Open("savedState.bin", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
-
+            InGameMenu ing = (InGameMenu)stateMachine.PopState();
             LocalMap lm = (LocalMap)stateMachine.PopState();
                 //lm.saveToXml(stream, bformatter);
                 //bformatter.Serialize(stream, p);
             bformatter.Serialize(stream, lm);
             bformatter.Serialize(stream, lm.Player);
             stateMachine.AddState(lm);
+            stateMachine.AddState(ing);
             stream.Close();
         }
 

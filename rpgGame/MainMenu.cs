@@ -54,5 +54,10 @@ namespace rpgGame
         {
             this.posY = posY;
         }
+
+        public override bool ordenPop()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

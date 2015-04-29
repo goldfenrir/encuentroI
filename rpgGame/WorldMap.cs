@@ -14,6 +14,10 @@ namespace rpgGame
         protected Image background;
         private int mapAct;
 
+        public override bool ordenPop()
+        {
+            throw new NotImplementedException();
+        }
         public override void loadFromXml(System.IO.Stream stream, System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf)
         {
             throw new NotImplementedException();

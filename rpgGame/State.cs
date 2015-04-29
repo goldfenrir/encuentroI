@@ -48,5 +48,7 @@ namespace rpgGame
         {
             //def
         }
+
+        public abstract bool ordenPop();
     }
 }

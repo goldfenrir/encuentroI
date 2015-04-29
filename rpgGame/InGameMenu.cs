@@ -51,7 +51,7 @@ namespace rpgGame
             throw new NotImplementedException();
         }
 
-        public bool ordenPop(){
+        public override bool ordenPop(){
         //arreglar
         if (KeyManager.enter){
             if (sel.getOpt()==1){

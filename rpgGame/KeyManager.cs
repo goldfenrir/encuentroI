@@ -24,7 +24,7 @@ namespace rpgGame
             left = keys[(int)Keys.Left];
             right = keys[(int)Keys.Right];
             menu = keys[(int)Keys.M];
-            enter = keys[(int)Keys.Enter];
+            enter = keys[(int)Keys.Space];
         }
         public static void HandleKeyPress(KeyEventArgs e)
         {

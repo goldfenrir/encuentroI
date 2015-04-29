@@ -35,16 +35,6 @@ namespace rpgGame
             options.Add("SAVE");
             options.Add("SALIR");
             sel = new Selector(x - widthB, y, widthB, heightB, space, 2);
-            Button but1 = new Button();
-            but1.Text = options[0];
-            but1.Location = new Point(x,y);
-            but1.Width = widthB;
-            but1.Height = heightB;
-            Button but2 = new Button();
-            but2.Text = options[1];
-            but2.Location = new Point(x,y+space);
-            but2.Width = widthB;
-            but2.Height = heightB;
             buttons.Add(new GButton(options[0], x, y, widthB, heightB));
             buttons.Add(new GButton(options[1], x, y + space, widthB, heightB));
             this.eng = eng;

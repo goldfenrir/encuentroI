@@ -45,7 +45,7 @@ namespace rpgGame
 
         int cen=(int)(sprite[0].Width-title.Length*((int)(fontSize*0.65)))/(2);
         //g.drawString(title,x+cen,y+fontSize);
-        g.DrawString(title, fnt0, new SolidBrush(Color.Black), new Point(x + cen, y+fontSize));
+        g.DrawString(title, fnt0, new SolidBrush(Color.Black), new Point(x + cen, y+fontSize-20));
     }
     }
 }

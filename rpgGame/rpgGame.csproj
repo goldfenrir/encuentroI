@@ -184,6 +184,9 @@
   <ItemGroup>
     <None Include="bin\Debug\cecilia.png" />
     <Content Include="bin\Debug\bgF.jpg" />
+    <Content Include="bin\Debug\button1.png" />
+    <Content Include="bin\Debug\button2.png" />
+    <Content Include="bin\Debug\buttonF.png" />
     <Content Include="bin\Debug\Converted_file_0977ff77.ico" />
     <None Include="bin\Debug\diego.png" />
     <Content Include="bin\Debug\initialState.xml" />

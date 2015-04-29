@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.label_game = new System.Windows.Forms.Label();
+            /*this.label_game = new System.Windows.Forms.Label();
             this.but_start = new System.Windows.Forms.Button();
             this.but_options = new System.Windows.Forms.Button();
             this.but_car = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@
             this.label_game.Text = "Un encuentro inesperado";
             // 
             // but_start
-            // 
+            // /*
             this.but_start.AccessibleName = "but_start";
             this.but_start.Location = new System.Drawing.Point(71, 238);
             this.but_start.Name = "but_start";
@@ -114,10 +114,10 @@
             this.Controls.Add(this.but_car);
             this.Controls.Add(this.but_options);
             this.Controls.Add(this.but_start);
-            this.Controls.Add(this.label_game);
+            this.Controls.Add(this.label_game);*/
             this.Name = "Form1";
             this.Text = "RPG GAME";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
@@ -126,13 +126,13 @@
         }
 
         #endregion
-
+        /*
         private System.Windows.Forms.Label label_game;
         private System.Windows.Forms.Button but_start;
         private System.Windows.Forms.Button but_options;
         private System.Windows.Forms.Button but_car;
         private System.Windows.Forms.Button but_scores;
-        private System.Windows.Forms.Button but_credits;
+        private System.Windows.Forms.Button but_credits;*/
     }
 }
 

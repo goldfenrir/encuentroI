@@ -17,9 +17,10 @@ namespace rpgGame
         public Form1()
         {
             InitializeComponent();
-
+            game = new Game(this, 800, 740, "encuentro inesperado");
+            game.Start();
         }
-
+        
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             KeyManager.HandleKeyPress(e);
@@ -29,12 +30,12 @@ namespace rpgGame
         {
             KeyManager.HandleKeyUp(e);
         }
-
+        /*
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
+        /*
         private void but_start_Click(object sender, EventArgs e)
         {
 
@@ -62,7 +63,7 @@ namespace rpgGame
         {
 
         }
-        */
+        *//*
         private void but_car_Click(object sender, EventArgs e)
         {
             dataPlayer = new FormDatos();
@@ -83,6 +84,6 @@ namespace rpgGame
         private void pic_load_Click(object sender, EventArgs e)
         {
             game.loadStateToBin();
-        }
+        }*/
     }
 }

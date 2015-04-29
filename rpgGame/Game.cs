@@ -147,6 +147,8 @@ namespace rpgGame
                 LMS.getMaps().Add(m);
             stateMachine = new StateMachine();
             stateMachine.AddState(LMS);
+            MainMenu menu = new MainMenu(this);
+            stateMachine.AddState(menu);
             stream.Close();
         }
 
@@ -200,7 +202,7 @@ namespace rpgGame
         {
             KeyManager.Tick();
             if (stateMachine.PeekState().ordenPop())
-                getSM().PopState();
+                stateMachine.PopState();
             if (stateMachine.getState().Count!=0)
             {
                 stateMachine.PeekState().Tick();
@@ -218,7 +220,7 @@ namespace rpgGame
 
             //monster.Draw(device);
             worldMapSpritePb.Image = imageDevice;
-            Thread.Sleep(5);
+            Thread.Sleep(20);
 
         }
 

@@ -236,7 +236,7 @@ namespace rpgGame
 
         public void saveStateToBin()
         {
-            //string namefile = "savedState" + num.ToString() + ".bin";
+            //string namefile = arch  + ".bin";
             Stream stream = File.Open("savedState.bin", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
             InGameMenu ing = (InGameMenu)stateMachine.PopState();

@@ -55,10 +55,25 @@ namespace rpgGame
         //arreglar
         if (KeyManager.enter){
             if (sel.getOpt()==1){
-                eng.saveStateToBin();
+                /*FormSave saving = new FormSave();
+                saving.Show();
+                String text = saving.getText();
+                if (saving.Clicked)
+                {
+                    saving.Close();
+                    eng.saveStateToBin(text);
+                    KeyManager.menu = false;
+                    Console.WriteLine("1");
+                    eng.getSM().PopState();
+                    return true;
+                }*/
+                
                 Console.WriteLine("1");
+                eng.saveStateToBin();
+                //KeyManager.menu = false;
                 eng.getSM().PopState();
-
+                 
+                
             }
             if (sel.getOpt()==2){
                 Console.WriteLine("2");

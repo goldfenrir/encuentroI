@@ -10,28 +10,20 @@ using System.Windows.Forms;
 
 namespace rpgGame
 {
-    public partial class FormCredits : Form
+    public partial class FormLoad : Form
     {
-        Game game;
-        public FormCredits()
+        public FormLoad()
         {
             InitializeComponent();
-    
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void FormLoad_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void label3_Click(object sender, EventArgs e)
+        public ComboBox getCombo()
         {
-
-        }
-
-        private void FormCredits_Load(object sender, EventArgs e)
-        {
-
+            return this.combo_load;
         }
     }
 }

@@ -85,6 +85,20 @@ namespace rpgGame
                 //                    }
                 //                });
                 //                lgDialog.setVisible(true);
+
+
+                /*LoadFiles loadingFiles = new LoadFiles(); // settear direccion bien
+                FormLoad load = new FormLoad();
+                ComboBox combo = load.getCombo();
+                string[] files = loadingFiles.getArchs();
+                foreach (string s in files)
+                {
+                    combo.Items.Add(s);
+                }
+                load.Show();
+                String arch = combo.Text;
+                */
+
                 eng.getSM().PopState();
                 eng.loadStateToBin();
             }

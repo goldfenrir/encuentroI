@@ -13,7 +13,7 @@ namespace rpgGame
     public partial class Form1 : Form
     {
         Game game;
-        public FormDatos dataPlayer;
+        //public FormDatos dataPlayer;
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +29,11 @@ namespace rpgGame
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             KeyManager.HandleKeyUp(e);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
         /*
         private void Form1_Load(object sender, EventArgs e)

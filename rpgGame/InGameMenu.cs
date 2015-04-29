@@ -14,7 +14,7 @@ namespace rpgGame
         
         protected List<String> options;
         private Selector sel;
-        private List<Button> buttons;
+        private List<GButton> buttons;
         private int space=100;
         private String title="Nido Nuevo, Amigos Nuevos!";
         private Font fntT;
@@ -28,7 +28,7 @@ namespace rpgGame
 
         public InGameMenu(Game eng)
         {
-            buttons = new List<Button>();
+            buttons = new List<GButton>();
             options = new List<String>();
             fntT = new Font(FontFamily.Families[5], fontSizeT);
             //fntT = new Font("Comic Sans MS", Font.BOLD, fontSizeT);
@@ -45,8 +45,8 @@ namespace rpgGame
             but2.Location = new Point(x,y+space);
             but2.Width = widthB;
             but2.Height = heightB;
-            buttons.Add(but1);
-            buttons.Add(but2);
+            buttons.Add(new GButton(options[0], x, y, widthB, heightB));
+            buttons.Add(new GButton(options[1], x, y + space, widthB, heightB));
             this.eng = eng;
             background = new Bitmap("zoo2.jpg");
            // background = ImageLoader.loadImage("/img/bgF.jpg");
@@ -84,12 +84,13 @@ namespace rpgGame
         public override void Draw(Graphics dv)
         {
             dv.DrawImage(background, 0, 0, 800, 700);
+            
             //g.drawImage(background, 0, 0, 800, 700, null);
-            /*for (int i = 0; i < buttons.Count; i++)
+            for (int i = 0; i < buttons.Count; i++)
             {
-                buttons[i].render(g);
-
-            }*/
+                buttons[i].render(dv);
+                //buttons[i].BringToFront();
+            }
             sel.render(dv);   
 
         }

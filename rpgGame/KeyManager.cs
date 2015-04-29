@@ -10,7 +10,7 @@ namespace rpgGame
     class KeyManager
     {
         private static bool[] keys = new bool [256];
-        public static bool up, down, left, right;
+        public static bool up, down, left, right, menu, enter;
 
         public KeyManager()
         {
@@ -23,6 +23,8 @@ namespace rpgGame
             down = keys[(int)Keys.Down];
             left = keys[(int)Keys.Left];
             right = keys[(int)Keys.Right];
+            menu = keys[(int)Keys.M];
+            enter = keys[(int)Keys.Enter];
         }
         public static void HandleKeyPress(KeyEventArgs e)
         {

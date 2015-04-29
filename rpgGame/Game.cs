@@ -274,6 +274,11 @@ namespace rpgGame
             stream.Close();
           
         }
+
+        public StateMachine getSM()
+        {
+            return stateMachine;
+        }
       
 
     }

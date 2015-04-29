@@ -227,7 +227,7 @@ namespace rpgGame
 
         public void saveStateToBin()
         {
-            Stream stream = File.Open("savedState.bin", FileMode.Create);
+            Stream stream = File.Open("savedState.xml", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
 
             stateMachine.PeekState().saveToXml(stream, bformatter);
@@ -237,13 +237,14 @@ namespace rpgGame
 
         public void loadStateToBin()
         {
-         /*   Stream stream = File.Open("savedState.bin", FileMode.Create);
+            Stream stream = File.Open("savedState.xml", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
 
-            stateMachine.PeekState().saveToXml(stream, bformatter);
+            //stateMachine.PeekState().saveToXml(stream, bformatter);
+            stateMachine.PeekState().loadFromXml(stream, bformatter);
             //bformatter.Serialize(stream, p);
             stream.Close();
-          */
+          
         }
       
 

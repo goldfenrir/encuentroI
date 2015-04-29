@@ -68,7 +68,22 @@ namespace rpgGame
         {
             LocalMap lm = (LocalMap)bf.Deserialize(stream);
             this.mapAct = lm.mapAct;
-            player = (Player)bf.Deserialize(stream);
+            Player playerTemp = (Player)bf.Deserialize(stream);
+            player.Name = playerTemp.Name;
+            player.Gender = playerTemp.Gender;
+            player.Id = playerTemp.Id;
+            player.Level = playerTemp.Level;
+            player.NumberOfClues = playerTemp.NumberOfClues;
+            player.PositionX = playerTemp.PositionX;
+            player.PositionY = playerTemp.PositionY;
+            player.S = playerTemp.S;
+            player.CloseNess = playerTemp.CloseNess;
+            player.XMove = playerTemp.XMove;
+            player.YMove = playerTemp.YMove;
+            player.Dir = playerTemp.Dir;
+            player.Clues = playerTemp.Clues;
+            player.Inventory = playerTemp.Inventory;
+
         }
 
         public int getMapAct()

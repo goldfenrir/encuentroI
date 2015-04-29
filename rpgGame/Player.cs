@@ -15,24 +15,108 @@ namespace rpgGame
     {
         private int contDelay = 5;
         private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         private String name;
+
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
         private int gender;
+
+        public int Gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
         private double closeNess;
+
+        public double CloseNess
+        {
+            get { return closeNess; }
+            set { closeNess = value; }
+        }
         private int numberOfClues;
-        private int positionX=0;
-        private int positionY=0;
+
+        public int NumberOfClues
+        {
+            get { return numberOfClues; }
+            set { numberOfClues = value; }
+        }
+        private int positionX = 0;
+
+        public int PositionX
+        {
+            get { return positionX; }
+            set { positionX = value; }
+        }
+        private int positionY = 0;
+
+        public int PositionY
+        {
+            get { return positionY; }
+            set { positionY = value; }
+        }
         private int level;
+
+        public int Level
+        {
+            get { return level; }
+            set { level = value; }
+        }
         private List<Image> sprite;
-        
+
         private Inventory inventory;
+
+        internal Inventory Inventory
+        {
+            get { return inventory; }
+            set { inventory = value; }
+        }
         private List<Item> clues;
+
+        internal List<Item> Clues
+        {
+            get { return clues; }
+            set { clues = value; }
+        }
         private int width = 35;
         private int height = 35;
         private int xMove;
+
+        public int XMove
+        {
+            get { return xMove; }
+            set { xMove = value; }
+        }
         private int yMove;
+
+        public int YMove
+        {
+            get { return yMove; }
+            set { yMove = value; }
+        }
         private Game eng;
         private int dir = 2;//der=2 izq=1 arr=3 aba=0
+
+        public int Dir
+        {
+            get { return dir; }
+            set { dir = value; }
+        }
         private int s = 0; //0->3
+
+        public int S
+        {
+            get { return s; }
+            set { s = value; }
+        }
         private int delay = 10;
         private int speed = 3;
         public Sprite partySprite;
@@ -41,27 +125,28 @@ namespace rpgGame
 
         public Player(SerializationInfo info, StreamingContext ctxt)
         {
-            contDelay = (int)info.GetValue("PlayerContDelay", typeof(int));
+            //contDelay = (int)info.GetValue("PlayerContDelay", typeof(int));
             id = (int)info.GetValue("PlayerId", typeof(int));
             name = (String)info.GetValue("PlayerName", typeof(String));
             gender = (int)info.GetValue("PlayerGender", typeof(int));
             closeNess = (double)info.GetValue("PlayerCloseness", typeof(double));
-            numberOfClues = (int)info.GetValue("PlayerClues", typeof(int));
+            numberOfClues = (int)info.GetValue("PlayerNumberOfClues", typeof(int));
+            clues = (List<Item>)info.GetValue("PlayerClues", typeof(List<Item>));
             positionX = (int)info.GetValue("PlayerPositionX", typeof(int));
             positionY = (int)info.GetValue("PlayerPositionY", typeof(int));
             level = (int)info.GetValue("PlayerLevel", typeof(int));
         //private List<Image> sprite;
         //private Inventory inventory; inventario sí
         //private List<Item> clues; clues también :c
-            width = (int)info.GetValue("PlayerWidth", typeof(int));
-            height = (int)info.GetValue("PlayerHeight", typeof(int));
+            //width = (int)info.GetValue("PlayerWidth", typeof(int));
+            //height = (int)info.GetValue("PlayerHeight", typeof(int));
             xMove = (int)info.GetValue("PlayerXMove", typeof(int));
             yMove = (int)info.GetValue("PlayerYMove", typeof(int));
         //private Game eng;
             dir = (int)info.GetValue("PlayerDir", typeof(int));
             s = (int)info.GetValue("PlayerS", typeof(int));
-            delay = (int)info.GetValue("PlayerDelay", typeof(int));
-            speed = (int)info.GetValue("PlayerSpeed", typeof(int));
+            //delay = (int)info.GetValue("PlayerDelay", typeof(int));
+            //speed = (int)info.GetValue("PlayerSpeed", typeof(int));
             inventory = (Inventory)info.GetValue("PlayerInventory", typeof(Inventory));
         //public Sprite partySprite;
         //private Layer LC;
@@ -69,23 +154,24 @@ namespace rpgGame
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
-            info.AddValue("PlayerContDelay", contDelay);
+            //info.AddValue("PlayerContDelay", contDelay);
             info.AddValue("PlayerId", id);
             info.AddValue("PlayerName",name);
             info.AddValue("PlayerGender", gender);
             info.AddValue("PlayerCloseness", closeNess);
+            info.AddValue("PlayerNumberOfClues", numberOfClues);
             info.AddValue("PlayerClues", clues);
             info.AddValue("PlayerPositionX", positionX);
             info.AddValue("PlayerPositionY", positionY);
             info.AddValue("PlayerLevel", level);
-            info.AddValue("PlayerWidth", width);
-            info.AddValue("PlayerHeight", height);
+            //info.AddValue("PlayerWidth", width);
+            //info.AddValue("PlayerHeight", height);
             info.AddValue("PlayerXMove", xMove);
             info.AddValue("PlayerYMove", yMove);
             info.AddValue("PlayerDir", dir);
             info.AddValue("PlayerS", s);
-            info.AddValue("PlayerDelay", delay);
-            info.AddValue("PlayerSpeed", speed);
+            //info.AddValue("PlayerDelay", delay);
+            //info.AddValue("PlayerSpeed", speed);
             info.AddValue("PlayerInventory", inventory);
         }
         public Player(Game game, Point location, int id)

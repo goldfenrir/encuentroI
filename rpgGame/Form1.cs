@@ -74,5 +74,15 @@ namespace rpgGame
             FormCredits creditos = new FormCredits();
             creditos.Show();
         }
+
+        private void pic_save_Click(object sender, EventArgs e)
+        {
+            game.saveStateToBin();
+        }
+
+        private void pic_load_Click(object sender, EventArgs e)
+        {
+            game.loadStateToBin();
+        }
     }
 }

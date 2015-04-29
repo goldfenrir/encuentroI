@@ -225,17 +225,26 @@ namespace rpgGame
             return this.lc;
         }
 
-        /*public void saveStateToXml()
+        public void saveStateToBin()
         {
-            Stream stream = File.Open("savedState.xml", FileMode.Create);
+            Stream stream = File.Open("savedState.bin", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
 
             stateMachine.PeekState().saveToXml(stream, bformatter);
                 //bformatter.Serialize(stream, p);
             stream.Close();
-        }*/
-         
+        }
 
+        public void loadStateToBin()
+        {
+         /*   Stream stream = File.Open("savedState.bin", FileMode.Create);
+            BinaryFormatter bformatter = new BinaryFormatter();
+
+            stateMachine.PeekState().saveToXml(stream, bformatter);
+            //bformatter.Serialize(stream, p);
+            stream.Close();
+          */
+        }
       
 
     }

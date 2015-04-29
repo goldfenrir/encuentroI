@@ -11,7 +11,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace rpgGame
 {
     [Serializable()]
-    class Player : Person, ISerializable 
+    class Player : ISerializable 
     {
         private int contDelay = 5;
         private int id;

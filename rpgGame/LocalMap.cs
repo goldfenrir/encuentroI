@@ -17,9 +17,21 @@ namespace rpgGame
         private Map map;
         private List<Map> maps = new List<Map>();
         private Player player;
+
+        internal Player Player
+        {
+            get { return player; }
+            set { player = value; }
+        }
         private List<Friend> friends;
         private int numMaps;
         private int mapAct;
+
+        public int MapAct
+        {
+            get { return mapAct; }
+            set { mapAct = value; }
+        }
         
         public LocalMap(SerializationInfo info, StreamingContext ctxt)
         {

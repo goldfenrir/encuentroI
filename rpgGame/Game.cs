@@ -89,6 +89,7 @@ namespace rpgGame
             saveToXml();*/
             loadFromXml(form);
             //Draw();
+            //saveStateToBin();
             
         }
 
@@ -227,21 +228,48 @@ namespace rpgGame
 
         public void saveStateToBin()
         {
-            Stream stream = File.Open("savedState.xml", FileMode.Create);
+            //string namefile = "savedState" + num.ToString() + ".bin";
+            Stream stream = File.Open("savedState.bin", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
 
-            stateMachine.PeekState().saveToXml(stream, bformatter);
+            LocalMap lm = (LocalMap)stateMachine.PopState();
+                //lm.saveToXml(stream, bformatter);
                 //bformatter.Serialize(stream, p);
+            bformatter.Serialize(stream, lm);
+            bformatter.Serialize(stream, lm.Player);
+            stateMachine.AddState(lm);
             stream.Close();
         }
 
         public void loadStateToBin()
         {
-            Stream stream = File.Open("savedState.xml", FileMode.Create);
-            BinaryFormatter bformatter = new BinaryFormatter();
+            //string namefile = "savedState" + num.ToString() + ".bin";
+            Stream stream = File.Open("savedState.bin", FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
 
+            LocalMap lm = (LocalMap)stateMachine.PopState();
+
+            LocalMap lmtemp = (LocalMap)bf.Deserialize(stream);
+             lm.MapAct = lmtemp.MapAct;
+            Player playerTemp = (Player)bf.Deserialize(stream);
+            lm.Player.Name = playerTemp.Name;
+            lm.Player.Gender = playerTemp.Gender;
+            lm.Player.Id = playerTemp.Id;
+            lm.Player.Level = playerTemp.Level;
+            lm.Player.NumberOfClues = playerTemp.NumberOfClues;
+            lm.Player.PositionX = playerTemp.PositionX;
+            lm.Player.PositionY = playerTemp.PositionY;
+            lm.Player.S = playerTemp.S;
+            lm.Player.CloseNess = playerTemp.CloseNess;
+            lm.Player.XMove = playerTemp.XMove;
+            lm.Player.YMove = playerTemp.YMove;
+            lm.Player.Dir = playerTemp.Dir;
+            lm.Player.Clues = playerTemp.Clues;
+            lm.Player.Inventory = playerTemp.Inventory;
+
+            stateMachine.AddState(lm);
             //stateMachine.PeekState().saveToXml(stream, bformatter);
-            stateMachine.PeekState().loadFromXml(stream, bformatter);
+            //stateMachine.PeekState().loadFromXml(stream, bformatter);
             //bformatter.Serialize(stream, p);
             stream.Close();
           

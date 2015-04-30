@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace rpgGame
 {
-    class Sprite
+    public class Sprite
     {
         public Point location;
         public Image image;

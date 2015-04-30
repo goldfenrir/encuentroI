@@ -16,7 +16,7 @@ using System.Xml.Schema;
 namespace rpgGame
 {
     
-    class Game :  IXmlSerializable
+    public class Game :  IXmlSerializable
     {
         private String title;
         private int width, height;
@@ -57,11 +57,16 @@ namespace rpgGame
 
         public void ReadXml(XmlReader reader)
         {
+            title = reader.ReadElementContentAsString();
+            width = reader.ReadElementContentAsInt();
+            height = reader.ReadElementContentAsInt();
+            XmlSerializer serializer = new XmlSerializer(typeof(LocalMap));
+            LocalMap lm = (LocalMap)serializer.Deserialize(reader);
         }
         
         public Game(Form form, int w, int h, String title)
         {
-            /*this.title = title;
+            this.title = title;
             this.width = w;
             this.height = h;
             gameForm = form;
@@ -93,8 +98,8 @@ namespace rpgGame
             LMS.getMaps().Add(map);
             stateMachine = new StateMachine();
             stateMachine.AddState(LMS);
-            saveToXml();*/
-            loadFromXml(form);
+            saveToXml();
+            //loadFromXml(form);
             //Draw();
             //saveStateToBin();
             
@@ -102,10 +107,15 @@ namespace rpgGame
 
         public void saveToXml()
         {
-            Stream stream = File.Open("initialState.xml", FileMode.Create);
-            BinaryFormatter bformatter = new BinaryFormatter();
-            bformatter.Serialize(stream, this);
-            stream.Close();
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            XmlWriter writer = XmlWriter.Create("GameInit.xml", settings);
+            XmlSerializer serializer = new XmlSerializer(typeof(Game));
+            serializer.Serialize(writer, this);
+            //Stream stream = File.Open("initialState.xml", FileMode.Create);
+            //BinaryFormatter bformatter = new BinaryFormatter();
+            //bformatter.Serialize(stream, this);
+            //stream.Close();
         }
 
         public void loadFromXml(Form form)

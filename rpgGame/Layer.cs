@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 namespace rpgGame
 {
    
-    class Layer 
+    public class Layer 
     {
         private int id;
         private int width, height;

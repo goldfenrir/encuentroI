@@ -14,7 +14,7 @@ using System.Xml.Schema;
 namespace rpgGame
 {
     [Serializable()]
-    class Player : ISerializable, IXmlSerializable
+    public class Player : ISerializable, IXmlSerializable
     {
         private int contDelay = 5;
         private int id;
@@ -167,18 +167,25 @@ namespace rpgGame
             writer.WriteStartElement("closeness");
             writer.WriteValue(closeNess);
             writer.WriteEndElement();
-            writer.WriteStartElement("Inventory");
-            foreach()
+            
+            if (inventory.getQuantity()!=0)
             {
-                writer.WriteStartElement("Path");
-                writer.WriteValue(paths[i]);
+                writer.WriteStartElement("Inventory");
+                foreach (Item i in inventory.getItems())
+                {
+                    writer.WriteStartElement("Nombre");
+                    writer.WriteValue(i.getName());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("stock");
+                    writer.WriteValue(i.getStock());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("Descripcion");
+                    writer.WriteValue(i.getDescription());
+                    writer.WriteEndElement();
+                }
                 writer.WriteEndElement();
-                writer.WriteStartElement("Img");
-                writer.WriteValue(dirImg[i]);
-                writer.WriteEndElement();
-                
             }
-            writer.WriteEndElement();
+            
         }
 
         public void ReadXml(XmlReader reader)
@@ -238,6 +245,7 @@ namespace rpgGame
         }
         public Player(Game game, Point location, int id)
         {
+            inventory = new Inventory();
             LC = game.getLc();
             this.eng = game;
             name = "GGwp"; //por cambiar, tiene que ser ingresao desde el meenu inicial

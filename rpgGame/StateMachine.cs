@@ -10,7 +10,7 @@ using System.Runtime.Serialization;
 namespace rpgGame
 {
     [Serializable()]
-    class StateMachine : ISerializable
+    public class StateMachine : ISerializable
     {
         private Stack<State> stackSM = new Stack<State>();
 

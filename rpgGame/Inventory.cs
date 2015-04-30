@@ -16,6 +16,12 @@ namespace rpgGame
         private int quantity;
         private int capacity;
 
+        public Inventory()
+        {
+            items = new List<Item>();
+            quantity = 0;
+            capacity = 0;
+        }
         public Inventory(SerializationInfo info, StreamingContext ctxt)
         {
             quantity = (int)info.GetValue("InventoryQuantity", typeof(int));

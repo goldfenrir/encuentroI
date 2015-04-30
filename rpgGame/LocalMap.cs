@@ -15,7 +15,7 @@ using System.Xml.Schema;
 namespace rpgGame
 {
     [Serializable()]
-    class LocalMap : State, IXmlSerializable
+    public class LocalMap : State, IXmlSerializable
     {
         private Map map;
         private List<Map> maps = new List<Map>();
@@ -44,7 +44,7 @@ namespace rpgGame
 
         public void WriteXml(XmlWriter writer)
         {
-            writer.WriteStartElement("Cantidad de mapas");
+            writer.WriteStartElement("Cantidad_de_mapas");
             writer.WriteValue(maps.Count);
             writer.WriteEndElement();
            
@@ -59,6 +59,12 @@ namespace rpgGame
 
         public void ReadXml(XmlReader reader)
         {
+            numMaps = reader.ReadElementContentAsInt();
+            XmlSerializer serializer = new XmlSerializer(typeof(Map));
+            for (int i = 0; i < numMaps;i++ )
+                maps.Add((Map)serializer.Deserialize(reader));
+            XmlSerializer serializer2 = new XmlSerializer(typeof(Player));
+            Player player = (Player)serializer2.Deserialize(reader);
         }
 
         public LocalMap(SerializationInfo info, StreamingContext ctxt)

@@ -15,7 +15,7 @@ using System.Xml.Schema;
 namespace rpgGame
 {
     [Serializable()]
-    class Map : ISerializable, IXmlSerializable
+    public class Map : ISerializable, IXmlSerializable
     {
         private int id;
         private List<Layer> layers = new List<Layer>();
@@ -54,7 +54,7 @@ namespace rpgGame
             writer.WriteStartElement("MapId");
             writer.WriteValue(id);
             writer.WriteEndElement();
-            writer.WriteStartElement("Number of Layers");
+            writer.WriteStartElement("Number_of_layers");
             writer.WriteValue(layers.Count);
             writer.WriteEndElement();
             writer.WriteStartElement("Source");

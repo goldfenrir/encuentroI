@@ -13,7 +13,7 @@ namespace rpgGame
 {
    
     [Serializable()]
-    abstract class State : ISerializable
+    public abstract class State : ISerializable
     {
         public State()
         {

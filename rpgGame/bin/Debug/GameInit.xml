@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Game>
+  <title>encuentro inesperado</title>
+  <width>800</width>
+  <height>740</height>
+  <LocalMap>
+    <Cantidad_de_mapas>1</Cantidad_de_mapas>
+    <Map>
+      <MapId>0</MapId>
+      <Number_of_layers>2</Number_of_layers>
+      <Source>
+        <Path>l1.txt</Path>
+        <Img>l1.png</Img>
+        <Path>lc1.txt</Path>
+        <Img>lc1.png</Img>
+      </Source>
+    </Map>
+    <Player>
+      <PosionX>80</PosionX>
+      <PositionY>80</PositionY>
+      <dir>2</dir>
+      <path>ash_sheet.png</path>
+      <contDelay>5</contDelay>
+      <width>35</width>
+      <height>35</height>
+      <tW>200</tW>
+      <tH>200</tH>
+      <speed>3</speed>
+      <closeness>0</closeness>
+    </Player>
+  </LocalMap>
+</Game>

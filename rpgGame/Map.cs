@@ -14,6 +14,7 @@ namespace rpgGame
     [Serializable()]
     class Map : ISerializable
     {
+        private int id;
         private List<Layer> layers = new List<Layer>();
         private int width, height;
         private int spawnX, spawnY;

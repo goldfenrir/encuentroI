@@ -68,16 +68,13 @@ namespace rpgGame
         {
             if (sel.getOpt() == 1)
             {
-                //FormDatos dataPlayer = new FormDatos(); ARREGLAR ESTO!
+                FormDatos dataPlayer = new FormDatos(); //ARREGLAR ESTO!
                 //dataPlayer.Show();
-
                 return true;
             }
 
             if (sel.getOpt() == 2)
             {
-
-
                 //                loadGame lgDialog = new loadGame(new java.awt.Frame());
                 //                lgDialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 //                    public void windowClosing(java.awt.event.WindowEvent e) {
@@ -85,22 +82,9 @@ namespace rpgGame
                 //                    }
                 //                });
                 //                lgDialog.setVisible(true);
-
-
-                /*LoadFiles loadingFiles = new LoadFiles(); // settear direccion bien
-                FormLoad load = new FormLoad();
-                ComboBox combo = load.getCombo();
-                string[] files = loadingFiles.getArchs();
-                foreach (string s in files)
-                {
-                    combo.Items.Add(s);
-                }
-                load.Show();
-                String arch = combo.Text;
-                */
-
-                eng.getSM().PopState();
+                //eng.getSM().PopState();
                 eng.loadStateToBin();
+                return true;
             }
         }
        /*

@@ -10,21 +10,20 @@ using System.Xml;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
+using System.Xml.Schema;
 
 namespace rpgGame
 {
-    [Serializable()]
-    class Game : ISerializable
+    
+    class Game :  IXmlSerializable
     {
         private String title;
         private int width, height;
         private bool running;
         private Thread newThread;
         private Form gameForm;
-        //public LocalMap worldMap;
-        //private Player playerParty;
         private PictureBox worldMapSpritePb;
-        //private Friend monster;
         private Graphics device;
         private Image imageDevice;
         private StateMachine stateMachine;
@@ -33,25 +32,33 @@ namespace rpgGame
         //Actual map
         private int currentMap = 0;
 
-        public Game(SerializationInfo info, StreamingContext ctxt)
+        public Game() { }
+        public XmlSchema GetSchema()
         {
-            title = (String)info.GetValue("GameTitle", typeof(String));
-            width = (int)info.GetValue("GameWidth", typeof(int));
-            height = (int)info.GetValue("GameHeight", typeof(int));
-            //lc = (int)info.GetValue("PlayerHeight", typeof(int));
-            currentMap = (int)info.GetValue("GameCurrMap", typeof(int));
-            stateMachine = (StateMachine)info.GetValue("GameStateMachine", typeof(StateMachine));
-
+            return null;
         }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        public void WriteXml(XmlWriter writer)
         {
-            info.AddValue("GameTitle", title);
-            info.AddValue("GameWidth", width);
-            info.AddValue("GameHeight", height);
-            info.AddValue("GameCurrMap", currentMap);
-            info.AddValue("GameStateMachine", stateMachine);
+            writer.WriteStartElement("title");
+            writer.WriteValue(title);
+            writer.WriteEndElement();
+            writer.WriteStartElement("width");
+            writer.WriteValue(width);
+            writer.WriteEndElement();
+            writer.WriteStartElement("height");
+            writer.WriteValue(height);
+            writer.WriteEndElement();
+            //los mapas
+            XmlSerializer serializer = new XmlSerializer(typeof(LocalMap));
+            LocalMap lm = (LocalMap)stateMachine.PeekState();
+            serializer.Serialize(writer, lm);
         }
+
+        public void ReadXml(XmlReader reader)
+        {
+        }
+        
         public Game(Form form, int w, int h, String title)
         {
             /*this.title = title;
@@ -214,11 +221,6 @@ namespace rpgGame
         {
                 // arreglar, poner como miembro las variables reutilizables
             stateMachine.PeekState().Draw(this.device); //statemch.top.render
-
-
-            //playerParty.Draw(this.device); AGREGAR ESTO EN PLAYER CUANDO LO JALA DE LOCALMAP
-
-            //monster.Draw(device);
             worldMapSpritePb.Image = imageDevice;
             Thread.Sleep(20);
 
@@ -241,8 +243,6 @@ namespace rpgGame
             BinaryFormatter bformatter = new BinaryFormatter();
             InGameMenu ing = (InGameMenu)stateMachine.PopState();
             LocalMap lm = (LocalMap)stateMachine.PopState();
-                //lm.saveToXml(stream, bformatter);
-                //bformatter.Serialize(stream, p);
             bformatter.Serialize(stream, lm);
             bformatter.Serialize(stream, lm.Player);
             stateMachine.AddState(lm);
@@ -275,9 +275,6 @@ namespace rpgGame
             lm.Player.Inventory = playerTemp.Inventory;
 
             stateMachine.AddState(lm);
-            //stateMachine.PeekState().saveToXml(stream, bformatter);
-            //stateMachine.PeekState().loadFromXml(stream, bformatter);
-            //bformatter.Serialize(stream, p);
             stream.Close();
           
         }

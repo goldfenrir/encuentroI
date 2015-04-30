@@ -7,11 +7,14 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Xml.Schema;
 
 namespace rpgGame
 {
     [Serializable()]
-    class Player : ISerializable 
+    class Player : ISerializable, IXmlSerializable
     {
         private int contDelay = 5;
         private int id;
@@ -122,6 +125,65 @@ namespace rpgGame
         public Sprite partySprite;
         private Layer LC;
         //private LocalMap worldMap;
+
+        public Player() { }
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteStartElement("PosionX");
+            writer.WriteValue(positionX);
+            writer.WriteEndElement();
+            writer.WriteStartElement("PositionY");
+            writer.WriteValue(positionY);
+            writer.WriteEndElement();
+            writer.WriteStartElement("dir");
+            writer.WriteValue(dir);
+            writer.WriteEndElement();
+            writer.WriteStartElement("path");
+            writer.WriteValue("ash_sheet.png");
+            writer.WriteEndElement(); 
+            writer.WriteStartElement("contDelay");
+            writer.WriteValue(contDelay);
+            writer.WriteEndElement();
+            writer.WriteStartElement("width");
+            writer.WriteValue(width);
+            writer.WriteEndElement();
+            writer.WriteStartElement("height");
+            writer.WriteValue(height);
+            writer.WriteEndElement();
+            writer.WriteStartElement("tW");
+            writer.WriteValue("200");
+            writer.WriteEndElement();
+            writer.WriteStartElement("tH");
+            writer.WriteValue("200");
+            writer.WriteEndElement();
+            writer.WriteStartElement("speed");
+            writer.WriteValue(speed);
+            writer.WriteEndElement();
+            writer.WriteStartElement("closeness");
+            writer.WriteValue(closeNess);
+            writer.WriteEndElement();
+            writer.WriteStartElement("Inventory");
+            foreach()
+            {
+                writer.WriteStartElement("Path");
+                writer.WriteValue(paths[i]);
+                writer.WriteEndElement();
+                writer.WriteStartElement("Img");
+                writer.WriteValue(dirImg[i]);
+                writer.WriteEndElement();
+                
+            }
+            writer.WriteEndElement();
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+        }
 
         public Player(SerializationInfo info, StreamingContext ctxt)
         {

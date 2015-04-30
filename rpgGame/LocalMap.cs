@@ -8,11 +8,14 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Xml.Schema;
 
 namespace rpgGame
 {
     [Serializable()]
-    class LocalMap : State, ISerializable
+    class LocalMap : State, IXmlSerializable
     {
         private Map map;
         private List<Map> maps = new List<Map>();
@@ -33,6 +36,31 @@ namespace rpgGame
             set { mapAct = value; }
         }
         
+        public LocalMap() { }
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteStartElement("Cantidad de mapas");
+            writer.WriteValue(maps.Count);
+            writer.WriteEndElement();
+           
+            //los mapas
+            foreach(Map m in maps){
+                XmlSerializer serializer = new XmlSerializer(typeof(Map));
+                serializer.Serialize(writer,m);
+            }
+            XmlSerializer serializer2 = new XmlSerializer(typeof(Player));
+            serializer2.Serialize(writer, player);
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+        }
+
         public LocalMap(SerializationInfo info, StreamingContext ctxt)
         {
             //map = (Map)info.GetValue("LMMap", typeof(Map));

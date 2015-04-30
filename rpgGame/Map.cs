@@ -8,11 +8,14 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Xml.Schema;
 
 namespace rpgGame
 {
     [Serializable()]
-    class Map : ISerializable
+    class Map : ISerializable, IXmlSerializable
     {
         private int id;
         private List<Layer> layers = new List<Layer>();
@@ -20,6 +23,7 @@ namespace rpgGame
         private int spawnX, spawnY;
         private String[] paths;
         private int numLayers;
+        //private String[] dirImg;
 
         public int NumLayers
         {
@@ -37,6 +41,38 @@ namespace rpgGame
         {
             get { return dirImg; }
             set { dirImg = value; }
+        }
+
+        public Map() { }
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteStartElement("MapId");
+            writer.WriteValue(id);
+            writer.WriteEndElement();
+            writer.WriteStartElement("Number of Layers");
+            writer.WriteValue(layers.Count);
+            writer.WriteEndElement();
+            writer.WriteStartElement("Source");
+            for (int i = 0; i < layers.Count; i++)
+            {
+                writer.WriteStartElement("Path");
+                writer.WriteValue(paths[i]);
+                writer.WriteEndElement();
+                writer.WriteStartElement("Img");
+                writer.WriteValue(dirImg[i]);
+                writer.WriteEndElement();
+                
+            }
+            writer.WriteEndElement();
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
         }
 
         public Map(SerializationInfo info, StreamingContext ctxt)

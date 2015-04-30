@@ -73,6 +73,20 @@ namespace rpgGame
 
         public void ReadXml(XmlReader reader)
         {
+            reader.ReadStartElement();
+            id = reader.ReadElementContentAsInt();
+            numLayers = reader.ReadElementContentAsInt();
+            reader.Read();
+            paths = new string[numLayers];
+            dirImg = new string[numLayers];
+            for (int i = 0; i < numLayers; i++)
+            {
+                paths[i] = (string)reader.ReadElementContentAsString();
+                dirImg[i] = (string)reader.ReadElementContentAsString();
+                layers.Add(new Layer(paths[i], dirImg[i]));
+            }
+            reader.Read();
+            reader.Read();
         }
 
         public Map(SerializationInfo info, StreamingContext ctxt)

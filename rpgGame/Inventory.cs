@@ -38,6 +38,11 @@ namespace rpgGame
 
         }
 
+        public void addItem(Item it)
+        {
+            items.Add(it);
+        }
+
         public void addItem(int itemId)
         {
 

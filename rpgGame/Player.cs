@@ -190,6 +190,38 @@ namespace rpgGame
 
         public void ReadXml(XmlReader reader)
         {
+            reader.ReadStartElement();
+            positionX = reader.ReadElementContentAsInt();
+            positionY = reader.ReadElementContentAsInt();
+            dir = reader.ReadElementContentAsInt();
+            string path = reader.ReadElementContentAsString();
+            Bitmap bmp = new Bitmap(path);
+            partySprite = new Sprite(new Point(positionX, positionY), bmp, id);
+            sprite = new List<Image>();
+            for (int px = 0; px < 12; px++)
+            {
+                sprite.Add(partySprite.crop(px * width, 0, width, height));
+            }
+            contDelay = reader.ReadElementContentAsInt();
+            width = reader.ReadElementContentAsInt();
+            height = reader.ReadElementContentAsInt();
+            reader.ReadElementContentAsInt();
+            reader.ReadElementContentAsInt();
+            speed = reader.ReadElementContentAsInt();
+            closeNess = reader.ReadElementContentAsDouble();
+            reader.Read();
+            if (reader.Value.Equals("Inventory"))
+            {
+                inventory = new Inventory();
+                reader.Read();
+                while(reader.Value.Equals("Inventory")){
+                    string name1 = reader.ReadElementContentAsString();
+                    int stock = reader.ReadElementContentAsInt();
+                    string descr = reader.ReadElementContentAsString();
+                    Item it = new Item(name1, stock, descr);
+                    inventory.addItem(it);
+                }
+            }
         }
 
         public Player(SerializationInfo info, StreamingContext ctxt)
@@ -357,6 +389,14 @@ namespace rpgGame
 
         }
 
+        public void SetGame(Game gam)
+        {
+            this.eng = gam;
+        }
+        public void SetLC(Layer layer)
+        {
+            this.LC = layer;
+        }
         public void increaseCloseness()
         {
 

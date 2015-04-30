@@ -53,20 +53,26 @@ namespace rpgGame
             XmlSerializer serializer = new XmlSerializer(typeof(LocalMap));
             LocalMap lm = (LocalMap)stateMachine.PeekState();
             serializer.Serialize(writer, lm);
+
         }
 
         public void ReadXml(XmlReader reader)
         {
+            reader.ReadStartElement();
             title = reader.ReadElementContentAsString();
             width = reader.ReadElementContentAsInt();
             height = reader.ReadElementContentAsInt();
             XmlSerializer serializer = new XmlSerializer(typeof(LocalMap));
             LocalMap lm = (LocalMap)serializer.Deserialize(reader);
+            lm.Player.SetGame(this);
+            lm.Player.SetLC(lm.getMaps()[0].getLC());
+            stateMachine = new StateMachine();
+            stateMachine.AddState(lm);
         }
         
         public Game(Form form, int w, int h, String title)
         {
-            this.title = title;
+            /*this.title = title;
             this.width = w;
             this.height = h;
             gameForm = form;
@@ -98,8 +104,8 @@ namespace rpgGame
             LMS.getMaps().Add(map);
             stateMachine = new StateMachine();
             stateMachine.AddState(LMS);
-            saveToXml();
-            //loadFromXml(form);
+            saveToXml();*/
+            loadFromXml(form);
             //Draw();
             //saveStateToBin();
             
@@ -112,21 +118,19 @@ namespace rpgGame
             XmlWriter writer = XmlWriter.Create("GameInit.xml", settings);
             XmlSerializer serializer = new XmlSerializer(typeof(Game));
             serializer.Serialize(writer, this);
-            //Stream stream = File.Open("initialState.xml", FileMode.Create);
-            //BinaryFormatter bformatter = new BinaryFormatter();
-            //bformatter.Serialize(stream, this);
-            //stream.Close();
         }
 
         public void loadFromXml(Form form)
         {
-            Stream stream = File.Open("initialState.xml", FileMode.OpenOrCreate);
-            BinaryFormatter bformatter = new BinaryFormatter();
-            Game gameTemp = (Game)bformatter.Deserialize(stream);
-            title = gameTemp.title;
-            width = gameTemp.width;
-            height = gameTemp.height;
-            currentMap = gameTemp.currentMap;
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
+            XmlReader writer = XmlReader.Create("GameInit.xml", settings);
+            XmlSerializer serializer = new XmlSerializer(typeof(Game));
+            Game gtemp = (Game)serializer.Deserialize(writer);
+            title = gtemp.title;
+            width = gtemp.width;
+            height = gtemp.height;
+            //currentMap = gameTemp.currentMap;
 
             gameForm = form;
             // se inicializa el form
@@ -144,29 +148,10 @@ namespace rpgGame
             worldMapSpritePb.Height = gameForm.Height;
             worldMapSpritePb.BackColor = Color.Green;
             worldMapSpritePb.Parent = gameForm;
-            LocalMap lmtemp = (LocalMap)gameTemp.stateMachine.PeekState();
-            //LocalMap LMS = new LocalMap(gameForm, this);
-            List<Map> mapList = new List<Map>();
-            Console.WriteLine("cantidad de mapas : " + lmtemp.getMaps().Count);
-            for (int i = 0; i < lmtemp.getMaps().Count; i++ )
-            {
-                Map m = lmtemp.getMaps()[i];
-                Console.WriteLine("cantidad de layers : " + m.NumLayers);
-                string[] paths = m.Paths;
-                string[] dirImg = m.DirImg;
-                Map map = new Map(this, m.NumLayers, paths, dirImg);//eng, cant layer, paths2, iamgeleyer
-                //this.lc = map.getLC();
-                mapList.Add(map);
-            }
-            this.lc = mapList[currentMap].getLC();
-            LocalMap LMS = new LocalMap(gameForm, this);
-            foreach (Map m in mapList)
-                LMS.getMaps().Add(m);
-            stateMachine = new StateMachine();
-            stateMachine.AddState(LMS);
+            this.stateMachine = gtemp.stateMachine;
+            
             MainMenu menu = new MainMenu(this);
             stateMachine.AddState(menu);
-            stream.Close();
         }
 
         
@@ -205,7 +190,7 @@ namespace rpgGame
 				delta--;
 			}
 			
-			if(timer >= 1300000000){
+			if(timer >= 13000000){
 				Console.WriteLine("Ticks and Frames: " + ticks);
 				ticks = 0;
 				timer = 0;
@@ -232,7 +217,7 @@ namespace rpgGame
                 // arreglar, poner como miembro las variables reutilizables
             stateMachine.PeekState().Draw(this.device); //statemch.top.render
             worldMapSpritePb.Image = imageDevice;
-            Thread.Sleep(20);
+            Thread.Sleep(15);
 
         }
 

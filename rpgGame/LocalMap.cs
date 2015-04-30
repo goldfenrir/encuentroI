@@ -59,12 +59,15 @@ namespace rpgGame
 
         public void ReadXml(XmlReader reader)
         {
+            reader.ReadStartElement();
             numMaps = reader.ReadElementContentAsInt();
+            //reader.ReadEndElement();
             XmlSerializer serializer = new XmlSerializer(typeof(Map));
             for (int i = 0; i < numMaps;i++ )
-                maps.Add((Map)serializer.Deserialize(reader));
+                this.maps.Add((Map)serializer.Deserialize(reader));
             XmlSerializer serializer2 = new XmlSerializer(typeof(Player));
-            Player player = (Player)serializer2.Deserialize(reader);
+            this.player = (Player)serializer2.Deserialize(reader);
+            mapAct = 0;
         }
 
         public LocalMap(SerializationInfo info, StreamingContext ctxt)

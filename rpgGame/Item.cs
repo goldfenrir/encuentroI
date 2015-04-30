@@ -17,6 +17,13 @@ namespace rpgGame
         private int stock;
         private String description;
 
+        public Item(string n, int stock, string desc)
+        {
+            name = n;
+            this.stock = stock;
+            description = desc;
+        }
+
         public Item(SerializationInfo info, StreamingContext ctxt)
         {
             id = (int)info.GetValue("ItemId", typeof(int));

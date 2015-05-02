@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DialogoDatos.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +201,7 @@
     <Content Include="bin\Debug\Converted_file_0977ff77.ico" />
     <None Include="bin\Debug\diego.png" />
     <Content Include="bin\Debug\GameInit.xml" />
+    <Content Include="bin\Debug\handcursor.jpg" />
     <Content Include="bin\Debug\l1.png" />
     <Content Include="bin\Debug\l1.txt" />
     <Content Include="bin\Debug\lc1.png" />

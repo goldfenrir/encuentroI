@@ -13,7 +13,7 @@ namespace rpgGame
     public partial class Form1 : Form
     {
         Game game;
-        //public FormDatos dataPlayer;
+        public FormDatos dataPlayer;
         public Form1()
         {
             InitializeComponent();
@@ -35,6 +35,13 @@ namespace rpgGame
         {
 
         }
+
+        public void dialogoDatos()
+        {
+            dataPlayer = new FormDatos();
+            dataPlayer.Show();
+        }
+
         /*
         private void Form1_Load(object sender, EventArgs e)
         {

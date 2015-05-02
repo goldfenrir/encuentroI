@@ -68,9 +68,15 @@ namespace rpgGame
         {
             if (sel.getOpt() == 1)
             {
-                FormDatos dataPlayer = new FormDatos(); //ARREGLAR ESTO!
+                //Console.WriteLine("creará un nuevo form");
+                //eng.GameForm.dialogoDatos();
+                //FormDatos dataPlayer = new FormDatos(); //ARREGLAR ESTO!
+                //dataPlayer.Parent = eng.GameForm;
                 //dataPlayer.Show();
-                return true;
+                eng.getSM().PopState();
+                DialogoDatos dialogoDatos = new DialogoDatos(eng);
+                eng.getSM().AddState(dialogoDatos);
+                return false;
             }
 
             if (sel.getOpt() == 2)

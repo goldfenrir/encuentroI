@@ -17,7 +17,7 @@ namespace rpgGame
         public FormDatos()
         {
             InitializeComponent();
-
+            this.Show();
 
         }
 

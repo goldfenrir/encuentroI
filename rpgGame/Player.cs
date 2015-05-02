@@ -371,6 +371,7 @@ namespace rpgGame
 
             if (KeyManager.right)
             {
+                Console.WriteLine("El nombre del jugador es " + name);
                 if (dir == 1) { if (delay == 0) { s++; delay = contDelay; } else delay--; } else s = 0;
                 this.dir = 1;
                 if (valid(getPositionX() + speed, getPositionY()))

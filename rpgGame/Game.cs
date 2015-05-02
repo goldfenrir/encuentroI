@@ -22,7 +22,13 @@ namespace rpgGame
         private int width, height;
         private bool running;
         private Thread newThread;
-        private Form gameForm;
+        private Form1 gameForm;
+
+        public Form1 GameForm
+        {
+            get { return gameForm; }
+            set { gameForm = value; }
+        }
         private PictureBox worldMapSpritePb;
         private Graphics device;
         private Image imageDevice;
@@ -70,7 +76,7 @@ namespace rpgGame
             stateMachine.AddState(lm);
         }
         
-        public Game(Form form, int w, int h, String title)
+        public Game(Form1 form, int w, int h, String title)
         {
             /*this.title = title;
             this.width = w;
@@ -120,7 +126,7 @@ namespace rpgGame
             serializer.Serialize(writer, this);
         }
 
-        public void loadFromXml(Form form)
+        public void loadFromXml(Form1 form)
         {
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.IgnoreWhitespace = true;

@@ -11,36 +11,52 @@ namespace rpgGame
     class Selector
     {
         protected Bitmap sprite;
-        private int opt; //option default
+        private int optY; //option default
         private String path;
         private int x, y, w, h;
         private int stepY;
-        private int contDelay = 10;
-        private int delay = 10;
-        private int max_opts;
-        public Selector(int x, int y, int w, int h, int stepY, int max)
+        private int stepX;
+        private int contDelay = 8;
+        private int delay = 8;
+        private int max_optsY;
+        private int max_optsX;
+        private int optX;
+        public Selector(int x, int y, int w, int h, int stepY, int maxY, int indSel = 1, int stepX = 1, int maxX= 1)
         {
-            this.max_opts = max;
-            this.opt = 1;
+            this.max_optsY = maxY;
+            this.max_optsX = maxX;
+            this.optY = 1;
+            this.optX = 1;
             this.x = x;
             this.y = y;
             this.w = w;
             this.h = h;
             this.stepY = stepY;
+            this.stepX = stepX;
             path = "selector.png";
+            if (indSel == 2)
+                path = "handcursor.jpg";
             sprite = new Bitmap(path);
 
+        }
+
+        public void right(){
+            if (getOptX() < max_optsX) if (delay == 0) { x += stepX; delay = contDelay; optX++; } else delay--;
+        }
+
+        public void left(){
+            if (getOptX() > 1) if (delay == 0) { x -= stepX; delay = contDelay; optX--; } else delay--;
         }
         public void down()
         {
 
-            if (getOpt() < max_opts) if (delay == 0) { y += stepY; delay = contDelay; opt++; } else delay--;
+            if (getOpt() < max_optsY) if (delay == 0) { y += stepY; delay = contDelay; optY++; } else delay--;
 
         }
         public void up()
         {
 
-            if (getOpt() > 1) if (delay == 0) { y -= stepY; delay = contDelay; opt--; } else delay--;
+            if (getOpt() > 1) if (delay == 0) { y -= stepY; delay = contDelay; optY--; } else delay--;
 
         }
         public void render(Graphics g)
@@ -54,7 +70,11 @@ namespace rpgGame
          */
         public int getOpt()
         {
-            return opt;
+            return optY;
+        }
+        public int getOptX()
+        {
+            return optX;
         }
     }
 }

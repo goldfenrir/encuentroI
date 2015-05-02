@@ -214,10 +214,16 @@ namespace rpgGame
 
         void Draw()
         {
+            if (gameForm.InvokeRequired)
+            {
+                MethodInvoker method = new MethodInvoker(Draw);
+                gameForm.Invoke(method);
+                return;
+            }
                 // arreglar, poner como miembro las variables reutilizables
             stateMachine.PeekState().Draw(this.device); //statemch.top.render
             worldMapSpritePb.Image = imageDevice;
-            Thread.Sleep(15);
+            //Thread.Sleep(15);
 
         }
 

@@ -190,7 +190,7 @@ namespace rpgGame
 				delta--;
 			}
 			
-			if(timer >= 13000000){
+			if(timer >= 1300000000){
 				Console.WriteLine("Ticks and Frames: " + ticks);
 				ticks = 0;
 				timer = 0;

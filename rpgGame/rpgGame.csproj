@@ -75,12 +75,6 @@
     <Compile Include="FormCredits.Designer.cs">
       <DependentUpon>FormCredits.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDatos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormDatos.Designer.cs">
-      <DependentUpon>FormDatos.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormLoad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,9 +120,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCredits.resx">
       <DependentUpon>FormCredits.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormDatos.resx">
-      <DependentUpon>FormDatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoad.resx">
       <DependentUpon>FormLoad.cs</DependentUpon>

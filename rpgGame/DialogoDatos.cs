@@ -19,40 +19,36 @@ namespace rpgGame
         private Selector sel;
         private Selector actSelector;
         private  int space=100;
-        private String title="Un Encuentro Inesperado";
         private String dialogo1 = "cual es tu nombre?";
         private String abc1 = "a    b    c    d    e    f    g    h    i    j";
         private String abc2 = "k    l    m    n    o    p    q    r    s    t";
         private String abc3 = "u    v    w    x    y    z   <- enter";
         private String nombre = " ";
         private char letra = 'a';
-        private String dialog2 = "yo soy";
         private Font fntT;
-        private  int fontSizeT=40;
         private Bitmap background;
         private Bitmap back2;
         private Game eng;
         private int x=275;    
         private int y=350;
-        private int  widthB=150; //buttton width
+        private int  widthB=250; //buttton width
         private int  heightB=30; //button height
-        private int selectY=250;
         public DialogoDatos(Game eng){
         //aca se debe cargar el menu inicial
         //carga de botones
             buttons=new List<GButton>();        
             options=new List<String>();
         //fntT =new Font("Comic Sans MS",Font.BOLD,fontSizeT);
-            fntT = new Font(FontFamily.Families[5], fontSizeT);
+            fntT = new Font(FontFamily.Families[5], 40);
             options.Add("Hombre");
             options.Add("Mujer");
             options.Add("Guardar");  
-            sel=new Selector(100,330,widthB+30,heightB+10,space,3);
+            sel=new Selector(x,y,widthB-100,heightB,space,3);
             selAbc = new Selector(240+30, 200, 50, 30, 30, 3, 2, 30, 10);
             actSelector = selAbc;
-            buttons.Add(new GButton(options[0],x,y,widthB+100,heightB+50));
-            buttons.Add(new GButton(options[1], x, y+100, widthB+100, heightB+50));
-            buttons.Add(new GButton(options[2], x, y + 200, widthB + 100, heightB + 50));
+            buttons.Add(new GButton(options[0],x,y,widthB,heightB+50));
+            buttons.Add(new GButton(options[1], x, y+100, widthB, heightB+50));
+            buttons.Add(new GButton(options[2], x, y + 200, widthB, heightB + 50));
             this.eng=eng;
             background=new Bitmap("zoofinal.jpg");
             back2 = new Bitmap("fondoestrelladoamarillo.jpg");

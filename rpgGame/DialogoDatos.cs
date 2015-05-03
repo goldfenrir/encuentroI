@@ -20,9 +20,9 @@ namespace rpgGame
         private Selector actSelector;
         private  int space=100;
         private String dialogo1 = "cual es tu nombre?";
-        private String abc1 = "a    b    c    d    e    f    g    h    i    j";
-        private String abc2 = "k    l    m    n    o    p    q    r    s    t";
-        private String abc3 = "u    v    w    x    y    z   <- enter";
+        private String abc1 = "a   b   c   d   e   f   g   h   i   j";
+        private String abc2 = "k   l   m   n   o   p   q   r   s   t";
+        private String abc3 = "u   v   w   x   y   z   <- enter";
         private String nombre = " ";
         private char letra = 'a';
         private Font fntT;
@@ -43,8 +43,8 @@ namespace rpgGame
             options.Add("Hombre");
             options.Add("Mujer");
             options.Add("Guardar");  
-            sel=new Selector(x,y,widthB-100,heightB,space,3);
-            selAbc = new Selector(240+30, 200, 50, 30, 30, 3, 2, 30, 10);
+            sel=new Selector(x - widthB +100,y,widthB-100,heightB,space,3);
+            selAbc = new Selector(210+30, 200, 50, 30, 30, 3, 2, 40, 10);
             actSelector = selAbc;
             buttons.Add(new GButton(options[0],x,y,widthB,heightB+50));
             buttons.Add(new GButton(options[1], x, y+100, widthB, heightB+50));
@@ -60,13 +60,13 @@ namespace rpgGame
             dev.DrawImage(background, 0, 0, 800, 700);
             dev.DrawImage(back2, 200, 50, 400, 500);
             //eng.GameForm.Opacity = 0.1;
-            Font fnt0 = new Font(FontFamily.Families[10], 30);
-            dev.DrawString(dialogo1, fnt0, new SolidBrush(Color.Brown), new Point(240,100));
+            Font fnt0 = new Font(FontFamily.Families[52], 30);
+            dev.DrawString(dialogo1, fnt0, new SolidBrush(Color.Brown), new Point(220,100));
             dev.DrawString(nombre, fnt0, new SolidBrush(Color.Green), new Point(250, 150));
-            fnt0 = new Font(FontFamily.Families[10], 20);
-            dev.DrawString(abc1, fnt0, new SolidBrush(Color.Brown), new Point(240, 200));
-            dev.DrawString(abc2, fnt0, new SolidBrush(Color.Brown), new Point(240, 230));
-            dev.DrawString(abc3, fnt0, new SolidBrush(Color.Brown), new Point(240, 260));
+            fnt0 = new Font(FontFamily.Families[52], 20);
+            dev.DrawString(abc1, fnt0, new SolidBrush(Color.Brown), new Point(210, 200));
+            dev.DrawString(abc2, fnt0, new SolidBrush(Color.Brown), new Point(210, 230));
+            dev.DrawString(abc3, fnt0, new SolidBrush(Color.Brown), new Point(210, 260));
             
             for (int i = 0; i < buttons.Count; i++)
             {

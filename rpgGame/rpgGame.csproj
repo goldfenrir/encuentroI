@@ -90,6 +90,7 @@
     <Compile Include="Friend.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GButton.cs" />
+    <Compile Include="Goals.cs" />
     <Compile Include="InGameMenu.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />

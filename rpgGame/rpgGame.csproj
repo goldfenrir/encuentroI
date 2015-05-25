@@ -192,6 +192,7 @@
     <None Include="bin\Debug\cecilia.png" />
     <Content Include="bin\Debug\bgF.jpg" />
     <Content Include="bin\Debug\bg_barn.png" />
+    <Content Include="bin\Debug\bg_battle.png" />
     <Content Include="bin\Debug\bg_schoolFloor.png" />
     <Content Include="bin\Debug\button1.png" />
     <Content Include="bin\Debug\button2.png" />

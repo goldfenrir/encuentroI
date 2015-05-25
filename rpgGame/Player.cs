@@ -419,13 +419,14 @@ namespace rpgGame
                 KeyManager.m = false;
                 auxR = 0;
                 InGameMenu inGameM = new InGameMenu(eng);
-                eng.getSM().add(inGameM);
+                eng.getSM().AddState(inGameM);
             }
             if (KeyManager.s && correct)
             {
+                Console.WriteLine("entra al correct y s ");
                 //debe ser cargado del xml
                 //Primero se crea los jugadores del minigame
-                List<Person> persons = new List<Person>();
+                List<Player> persons = new List<Player>();
                 persons.Add(this);
                 //preguntas
                 List<String> messages = new List<String>();
@@ -459,7 +460,7 @@ namespace rpgGame
                 MiniGame mini = new MiniGame(eng, persons, messages, answers, correct1, points);
 
 
-                eng.getSM().add(mini);
+                eng.getSM().AddState(mini);
             }
             if (KeyManager.enter)
             {

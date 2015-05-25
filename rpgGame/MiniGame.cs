@@ -31,7 +31,7 @@ namespace rpgGame
         private Font fnt1;
         private int selectY = y;
         private int turno = 0;
-        private List<Person> persons;
+        private List<Player> persons;
         private List<int> total;
         private List<int> points;
         private List<String[]> answers;
@@ -40,7 +40,7 @@ namespace rpgGame
         private bool force = false;
         private String resultado = null;
 
-        public MiniGame(Game eng, List<Person> persons, List<String> messages, List<String[]> answers, List<int> correct, List<int> points)
+        public MiniGame(Game eng, List<Player> persons, List<String> messages, List<String[]> answers, List<int> correct, List<int> points)
         {
             this.answers = answers;
             this.messages = messages;
@@ -76,7 +76,7 @@ namespace rpgGame
 
         }
 
-        public bool ordenPop(){
+        public override bool ordenPop(){
         //arreglar
         
         
@@ -94,13 +94,13 @@ namespace rpgGame
         }
         if (KeyManager.q){
             
-            System.exit(1);
+            //System.exit(1);
         }
        
         return (false || force);
     }
 
-        public void render(Graphics g){
+        public override void Draw(Graphics g){
         
         g.DrawImage(background,0,0,800,700);
         for (int i=0;i<buttons.Count;i++){
@@ -110,9 +110,9 @@ namespace rpgGame
         sel.render(g); 
 //        g.drawRect(0, 0, 700, 100);
         //g.setColor(Color.WHITE);
-        g.fillRect(0, 0, 800, 100);
+        //g.fillRect(0, 0, 800, 100);
         //g.setColor(Color.BLACK);
-        g.fillRect(0, 101, 800, 5);
+        //g.fillRect(0, 101, 800, 5);
         
         //g.setColor(Color.BLUE);
         //g.setFont(fnt0);
@@ -123,7 +123,7 @@ namespace rpgGame
             
             
             String[] auxS=new String[10];
-            auxS=messages[cont].Split(",");
+            auxS=messages[cont].Split(',');
             for (int i=0;i<auxS.Length;i++){
                 g.DrawString(auxS[i], fnt0, new SolidBrush(Color.Blue), 100, 50 + i * (35));  
             }
@@ -152,7 +152,7 @@ namespace rpgGame
             else
                 turno = 0;
         }
-        public void tick()
+        public override void Tick()
         {
 
             if (KeyManager.enter)
@@ -281,6 +281,16 @@ namespace rpgGame
         public void setTotal(List<int> total)
         {
             this.total = total;
+        }
+
+        public override void loadFromXml(System.IO.Stream stream, System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void saveToXml(System.IO.Stream stream, System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf)
+        {
+            throw new NotImplementedException();
         }
     }
 }

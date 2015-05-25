@@ -30,9 +30,10 @@ namespace rpgGame
             KeyManager.HandleKeyUp(e);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void cerrado(object sender, EventArgs e)
         {
-
+            Dispose();
+            //Application.Exit();
         }
 
         /*

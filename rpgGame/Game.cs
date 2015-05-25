@@ -78,6 +78,7 @@ namespace rpgGame
         
         public Game(Form1 form, int w, int h, String title)
         {
+            
             /*this.title = title;
             this.width = w;
             this.height = h;
@@ -220,16 +221,25 @@ namespace rpgGame
 
         void Draw()
         {
-            if (gameForm.InvokeRequired)
+            try
             {
-                MethodInvoker method = new MethodInvoker(Draw);
-                gameForm.Invoke(method);
-                return;
-            }
+                if (gameForm.InvokeRequired)
+                {
+                    MethodInvoker method = new MethodInvoker(Draw);
+                    gameForm.Invoke(method);
+                    return;
+
+                }
                 // arreglar, poner como miembro las variables reutilizables
-            stateMachine.PeekState().Draw(this.device); //statemch.top.render
-            worldMapSpritePb.Image = imageDevice;
-            //Thread.Sleep(15);
+                stateMachine.PeekState().Draw(this.device); //statemch.top.render
+                worldMapSpritePb.Image = imageDevice;
+                //Thread.Sleep(15);
+            }
+            catch (System.ObjectDisposedException e)
+            {
+                Console.WriteLine("gg");
+                newThread.Abort();
+            }
 
         }
 

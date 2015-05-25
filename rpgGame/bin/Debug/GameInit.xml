@@ -18,7 +18,7 @@
         <Trigger>
           <type>TriggerChangeMap</type>
           <par>16</par>
-          <par>6</par>
+          <par>5</par>
           <par>1</par>
           <par>410</par>
           <par>618</par>

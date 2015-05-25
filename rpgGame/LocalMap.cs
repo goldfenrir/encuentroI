@@ -148,7 +148,12 @@ namespace rpgGame
                 return i;
             }
             
-            
+            if(maps[getMapAct()].GetTriggers()[i] is TriggerMap){
+                TriggerMap trig = (TriggerMap)maps[getMapAct()].GetTriggers()[i];
+                if(getPlayer().getT(getPlayer().PositionX)==trig.getX()
+                    &&getPlayer().getT(getPlayer().PositionY)==trig.getY())
+                    return i;
+            }
             
         }
         return -1;

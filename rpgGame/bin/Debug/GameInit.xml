@@ -4,7 +4,7 @@
   <width>800</width>
   <height>740</height>
   <LocalMap>
-    <Cantidad_de_mapas>2</Cantidad_de_mapas>
+    <Cantidad_de_mapas>3</Cantidad_de_mapas>
     <Map>
       <MapId>0</MapId>
       <Number_of_layers>2</Number_of_layers>
@@ -23,6 +23,14 @@
           <par>410</par>
           <par>618</par>
         </Trigger>
+        <Trigger>
+          <type>TriggerMap</type>
+          <par>1</par>
+          <par>7</par>
+          <par>2</par>
+          <par>400</par>
+          <par>618</par>
+        </Trigger>
       </Triggers>
     </Map>
     <Map>
@@ -31,6 +39,34 @@
       <Source>
         <Path>l1.txt</Path>
         <Img>bg_barn.png</Img>
+        <Path>lc1.txt</Path>
+        <Img>lc1.png</Img>
+      </Source>
+      <Triggers>
+        <Trigger>
+          <type>TriggerChangeMap</type>
+          <par>11</par>
+          <par>17</par>
+          <par>0</par>
+          <par>620</par>
+          <par>260</par>
+        </Trigger>
+        <Trigger>
+          <type>TriggerMap</type>
+          <par>1</par>
+          <par>7</par>
+          <par>2</par>
+          <par>400</par>
+          <par>618</par>
+        </Trigger>
+      </Triggers>
+    </Map>
+    <Map>
+      <MapId>2</MapId>
+      <Number_of_layers>2</Number_of_layers>
+      <Source>
+        <Path>l1.txt</Path>
+        <Img>bg_schoolFloor.png</Img>
         <Path>lc1.txt</Path>
         <Img>lc1.png</Img>
       </Source>

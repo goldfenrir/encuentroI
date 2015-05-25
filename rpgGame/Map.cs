@@ -109,6 +109,29 @@ namespace rpgGame
                 writer.WriteValue(trig.getpY());
                 writer.WriteEndElement();
                 }
+
+                if (triggers[i] is TriggerMap)
+                {
+                    TriggerMap trig = (TriggerMap)triggers[i];
+                    writer.WriteStartElement("type");
+                    writer.WriteValue("TriggerMap");
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("par");
+                    writer.WriteValue(triggers[i].getX());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("par");
+                    writer.WriteValue(triggers[i].getY());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("par");
+                    writer.WriteValue(trig.getChangeTo());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("par");
+                    writer.WriteValue(trig.getpX());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("par");
+                    writer.WriteValue(trig.getpY());
+                    writer.WriteEndElement();
+                }
                 writer.WriteEndElement();
             }
                 writer.WriteEndElement();
@@ -136,24 +159,39 @@ namespace rpgGame
             if (val.Equals("Triggers"))
             {
                 reader.Read();
-                reader.Read();
-                string type = (string)reader.ReadElementContentAsString();
-                if (type.Equals("TriggerChangeMap"))
+                //reader.Read();
+                do
                 {
-                    int x = reader.ReadElementContentAsInt();
-                    int y = reader.ReadElementContentAsInt();
-                    int change = reader.ReadElementContentAsInt();
-                    int px = reader.ReadElementContentAsInt();
-                    int py = reader.ReadElementContentAsInt();
-                    TriggerChangeMap trig = new TriggerChangeMap(x, y, change, px, py);
-                    triggers.Add(trig);
-                }
-                reader.Read(); //fin de trigger
-                reader.Read(); //fin de triggers;
+                    reader.Read();
+                    string type = (string)reader.ReadElementContentAsString();
+                    if (type.Equals("TriggerChangeMap"))
+                    {
+                        int x = reader.ReadElementContentAsInt();
+                        int y = reader.ReadElementContentAsInt();
+                        int change = reader.ReadElementContentAsInt();
+                        int px = reader.ReadElementContentAsInt();
+                        int py = reader.ReadElementContentAsInt();
+                        TriggerChangeMap trig = new TriggerChangeMap(x, y, change, px, py);
+                        triggers.Add(trig);
+                    }
+
+                    else if (type.Equals("TriggerMap"))
+                    {
+                        int x = reader.ReadElementContentAsInt();
+                        int y = reader.ReadElementContentAsInt();
+                        int change = reader.ReadElementContentAsInt();
+                        int px = reader.ReadElementContentAsInt();
+                        int py = reader.ReadElementContentAsInt();
+                        TriggerMap trig = new TriggerMap(x, y, change, px, py);
+                        triggers.Add(trig);
+                    }
+                    //reader.Read(); //fin de trigger
+                    reader.Read(); //fin de triggers;
+                } while (reader.Name.Equals("Trigger"));
                 reader.Read();// fin map
+                reader.Read();
             }
             else reader.Read();//fin de map;
-            
         }
 
         public Map(SerializationInfo info, StreamingContext ctxt)
@@ -190,7 +228,8 @@ namespace rpgGame
             {
                 layers.Add(new Layer(paths[i], dirImg[i]));
             }
-            triggers.Add(new TriggerChangeMap(16, 5, 1, 410, 618));
+            //triggers.Add(new TriggerChangeMap(16, 5, 1, 410, 618));
+            //triggers.Add(new TriggerMap(1, 7, 2, 400, 618));
 
         }
         public void tick()

@@ -116,6 +116,7 @@
     <Compile Include="SubMenu.cs" />
     <Compile Include="Trigger.cs" />
     <Compile Include="TriggerChangeMap.cs" />
+    <Compile Include="TriggerMap.cs" />
     <Compile Include="WorldMap.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -189,6 +190,7 @@
     <None Include="bin\Debug\cecilia.png" />
     <Content Include="bin\Debug\bgF.jpg" />
     <Content Include="bin\Debug\bg_barn.png" />
+    <Content Include="bin\Debug\bg_schoolFloor.png" />
     <Content Include="bin\Debug\button1.png" />
     <Content Include="bin\Debug\button2.png" />
     <Content Include="bin\Debug\buttonF.png" />

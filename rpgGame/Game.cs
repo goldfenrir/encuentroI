@@ -33,6 +33,7 @@ namespace rpgGame
         private Graphics device;
         private Image imageDevice;
         private StateMachine stateMachine;
+        private LocalMap LMS;
         //layer de collision
         private Layer lc;
         //Actual map
@@ -57,7 +58,7 @@ namespace rpgGame
             writer.WriteEndElement();
             //los mapas
             XmlSerializer serializer = new XmlSerializer(typeof(LocalMap));
-            LocalMap lm = (LocalMap)stateMachine.PeekState();
+            LocalMap lm = LMS;
             serializer.Serialize(writer, lm);
 
         }
@@ -74,12 +75,13 @@ namespace rpgGame
             lm.Player.SetLC(lm.getMaps()[0].getLC());
             stateMachine = new StateMachine();
             stateMachine.AddState(lm);
+            LMS = lm;
         }
         
         public Game(Form1 form, int w, int h, String title)
         {
-            
-            /*this.title = title;
+            /*
+            this.title = title;
             this.width = w;
             this.height = h;
             gameForm = form;
@@ -107,12 +109,13 @@ namespace rpgGame
             dirImg[1] = "lc1.png";
             Map map = new Map(this, 2, paths, dirImg);//eng, cant layer, paths2, iamgeleyer
             lc = map.getLC();
-            LocalMap LMS = new LocalMap(gameForm, this);
+            LMS = new LocalMap(gameForm, this);
             LMS.getMaps().Add(map);
             stateMachine = new StateMachine();
             stateMachine.AddState(LMS);
             saveToXml();*/
             loadFromXml(form);
+            saveToXml();
             //Draw();
             //saveStateToBin();
             
@@ -125,6 +128,7 @@ namespace rpgGame
             XmlWriter writer = XmlWriter.Create("GameInit.xml", settings);
             XmlSerializer serializer = new XmlSerializer(typeof(Game));
             serializer.Serialize(writer, this);
+            writer.Close();
         }
 
         public void loadFromXml(Form1 form)
@@ -145,7 +149,7 @@ namespace rpgGame
             gameForm.Height = height;
             gameForm.Text = title;
             gameForm.BackColor = Color.White;
-
+            this.LMS = gtemp.LMS;
             imageDevice = new Bitmap(gameForm.Width, gameForm.Height);
             device = Graphics.FromImage(imageDevice);
 
@@ -156,7 +160,7 @@ namespace rpgGame
             worldMapSpritePb.BackColor = Color.Green;
             worldMapSpritePb.Parent = gameForm;
             this.stateMachine = gtemp.stateMachine;
-            
+            writer.Close();
             MainMenu menu = new MainMenu(this);
             stateMachine.AddState(menu);
         }

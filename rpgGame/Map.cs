@@ -23,12 +23,26 @@ namespace rpgGame
         private int spawnX, spawnY;
         private String[] paths;
         private int numLayers;
+        private List<Trigger> triggers = new List<Trigger>();
         //private String[] dirImg;
 
         public int NumLayers
         {
             get { return numLayers; }
             set { numLayers = value; }
+        }
+
+        public List<Trigger> GetTriggers()
+        {
+            return triggers;
+        }
+
+        /**
+         * @param triggers the triggers to set
+         */
+        public void SetTriggers(List<Trigger> triggers)
+        {
+            this.triggers = triggers;
         }
         public String[] Paths
         {
@@ -69,6 +83,35 @@ namespace rpgGame
                 
             }
             writer.WriteEndElement();
+            
+            writer.WriteStartElement("Triggers");
+            for (int i = 0; i < triggers.Count; i++)
+            {
+                writer.WriteStartElement("Trigger");
+                if(triggers[i] is TriggerChangeMap){
+                    TriggerChangeMap trig = (TriggerChangeMap)triggers[i];
+                    writer.WriteStartElement("type");
+                    writer.WriteValue("TriggerChangeMap");
+                    writer.WriteEndElement();
+                writer.WriteStartElement("par");
+                writer.WriteValue(triggers[i].getX());
+                writer.WriteEndElement();
+                writer.WriteStartElement("par");
+                writer.WriteValue(triggers[i].getY());
+                writer.WriteEndElement();
+                writer.WriteStartElement("par");
+                writer.WriteValue(trig.getChangeTo());
+                writer.WriteEndElement();
+                writer.WriteStartElement("par");
+                writer.WriteValue(trig.getpX());
+                writer.WriteEndElement();
+                writer.WriteStartElement("par");
+                writer.WriteValue(trig.getpY());
+                writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+            }
+                writer.WriteEndElement();
         }
 
         public void ReadXml(XmlReader reader)
@@ -85,8 +128,32 @@ namespace rpgGame
                 dirImg[i] = (string)reader.ReadElementContentAsString();
                 layers.Add(new Layer(paths[i], dirImg[i]));
             }
-            reader.Read();
-            reader.Read();
+            reader.Read(); // fin source
+            
+            //reader.Read();
+            
+            string val = reader.Name;
+            if (val.Equals("Triggers"))
+            {
+                reader.Read();
+                reader.Read();
+                string type = (string)reader.ReadElementContentAsString();
+                if (type.Equals("TriggerChangeMap"))
+                {
+                    int x = reader.ReadElementContentAsInt();
+                    int y = reader.ReadElementContentAsInt();
+                    int change = reader.ReadElementContentAsInt();
+                    int px = reader.ReadElementContentAsInt();
+                    int py = reader.ReadElementContentAsInt();
+                    TriggerChangeMap trig = new TriggerChangeMap(x, y, change, px, py);
+                    triggers.Add(trig);
+                }
+                reader.Read(); //fin de trigger
+                reader.Read(); //fin de triggers;
+                reader.Read();// fin map
+            }
+            else reader.Read();//fin de map;
+            
         }
 
         public Map(SerializationInfo info, StreamingContext ctxt)
@@ -123,6 +190,7 @@ namespace rpgGame
             {
                 layers.Add(new Layer(paths[i], dirImg[i]));
             }
+            triggers.Add(new TriggerChangeMap(16, 5, 1, 410, 618));
 
         }
         public void tick()

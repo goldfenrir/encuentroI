@@ -75,7 +75,7 @@ namespace rpgGame
         }
         private List<Image> sprite;
 
-        private Inventory inventory;
+        private Inventory inventory = new Inventory();
 
         internal Inventory Inventory
         {
@@ -293,7 +293,7 @@ namespace rpgGame
                 }
         }
 
-        private int getT(int x)
+        public int getT(int x)
         {
             int cW = (int)(LC.getTotalX() * 1.0 / LC.getWidth());
             return (x / cW) + 1;
@@ -309,6 +309,21 @@ namespace rpgGame
             Move();
          
         }
+
+
+        public Layer getLC()
+        {
+            return LC;
+        }
+
+        /**
+         * @param LC the LC to set
+         */
+        public void setLC(Layer LC)
+        {
+            this.LC = LC;
+        }
+        
 
         public int GetnumberOfClues()
         {
@@ -449,6 +464,9 @@ namespace rpgGame
         public void Draw(Graphics device)
         {
             device.DrawImage(sprite[this.dir * 3 + s], positionX, positionY, width, height);
+            Console.WriteLine("Pixel X: "+getPositionX()+", Pixel Y:"+getPositionY());        
+       Console.WriteLine("Title X: "+getT(getPositionX())+", Title Y: "+getT(getPositionY()));
+       //Console.WriteLine("Aux: " + auxR);
         }
 
         /*public void agregarWM(LocalMap worldMap){

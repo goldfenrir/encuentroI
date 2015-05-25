@@ -20,7 +20,7 @@ namespace rpgGame
         private Map map;
         private List<Map> maps = new List<Map>();
         private Player player;
-
+        private bool change = false;
         internal Player Player
         {
             get { return player; }
@@ -103,6 +103,11 @@ namespace rpgGame
                 dv.DrawImage(t.img, t.esqSupIzq);
             }
             player.Draw(dv);*/
+            //if (isChange()) //onChangeEnter(dv);
+            maps[getMapAct()].render(dv);
+            getPlayer().Draw(dv);
+            //if (isChange()) onChangeExit(dv);
+
             maps[getMapAct()].render(dv);
             player.Draw(dv);
         }
@@ -135,10 +140,25 @@ namespace rpgGame
 
         }
 
+        private int triggerActive(){
+        for(int i=0;i<maps[getMapAct()].GetTriggers().Count;i++){
+            if(maps[getMapAct()].GetTriggers()[i] is TriggerChangeMap)
+            if (getPlayer().getT(getPlayer().PositionX)==maps[getMapAct()].GetTriggers()[i].getX() 
+                    &&getPlayer().getT(getPlayer().PositionY)==maps[getMapAct()].GetTriggers()[i].getY()){
+                return i;
+            }
+            
+            
+            
+        }
+        return -1;
+    }
+
         public int getMapAct()
         {
             return mapAct;
         }
+
 
         public List<Map> getMaps(){
             return maps;
@@ -148,8 +168,15 @@ namespace rpgGame
             return player;
         }
 
-    
+        public void setChange(bool change)
+        {
+            this.change = change;
+        }
 
+        public bool isChange()
+        {
+            return change;
+        }
         
         public override void Tick()
         {
@@ -157,12 +184,24 @@ namespace rpgGame
             {
                 player.Tick();
             }
+            int i=triggerActive();
+        if ((i)>=0){
+            Trigger auxT=maps[getMapAct()].GetTriggers()[i];
+                maps[getMapAct()].GetTriggers()[i].execTrigger(this);
+                Layer aux=maps[getMapAct()].getLC();
+                getPlayer().setLC(aux);
             
+        }        
+        maps[getMapAct()].tick();
         }
 
         public override bool ordenPop()
         {
             return false;
+        }
+        public void setMapAct(int mapAct)
+        {
+            this.mapAct = mapAct;
         }
     }
 }

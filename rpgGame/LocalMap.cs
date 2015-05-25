@@ -154,6 +154,14 @@ namespace rpgGame
                     &&getPlayer().getT(getPlayer().PositionY)==trig.getY())
                     return i;
             }
+
+            if(maps[getMapAct()].GetTriggers()[i] is TriggerMini)
+            if (getPlayer().getT(getPlayer().PositionX)==maps[getMapAct()].GetTriggers()[i].getX() 
+                    &&getPlayer().getT(getPlayer().PositionY)==maps[getMapAct()].GetTriggers()[i].getY()){
+                return i;
+            }else{
+                player.correct=false;
+            }
             
         }
         return -1;
@@ -190,12 +198,15 @@ namespace rpgGame
                 player.Tick();
             }
             int i=triggerActive();
-        if ((i)>=0){
-            Trigger auxT=maps[getMapAct()].GetTriggers()[i];
+            if ((i)>=0){
+            Trigger auxT = maps[getMapAct()].GetTriggers()[i];
+            if(auxT is TriggerMini){
+                maps[getMapAct()].GetTriggers()[i].execTrigger(this);
+            }else{
                 maps[getMapAct()].GetTriggers()[i].execTrigger(this);
                 Layer aux=maps[getMapAct()].getLC();
                 getPlayer().setLC(aux);
-            
+            }
         }        
         maps[getMapAct()].tick();
         }

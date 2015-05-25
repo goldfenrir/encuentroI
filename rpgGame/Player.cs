@@ -18,6 +18,8 @@ namespace rpgGame
     {
         private int contDelay = 5;
         private int id;
+        private int auxR = 0;
+        public bool correct;
 
         public int Id
         {
@@ -401,6 +403,71 @@ namespace rpgGame
                 InGameMenu inGameM = new InGameMenu(eng);
                 eng.getSM().AddState(inGameM);
             }
+
+
+            if (KeyManager.menu)
+            {
+                if (auxR == 0) auxR++;
+            }
+            if (KeyManager.mR)
+            {
+                if (auxR == 1) auxR++;
+            }
+            if (auxR == 2)
+            {
+                KeyManager.mR = false;
+                KeyManager.m = false;
+                auxR = 0;
+                InGameMenu inGameM = new InGameMenu(eng);
+                eng.getSM().add(inGameM);
+            }
+            if (KeyManager.s && correct)
+            {
+                //debe ser cargado del xml
+                //Primero se crea los jugadores del minigame
+                List<Person> persons = new List<Person>();
+                persons.Add(this);
+                //preguntas
+                List<String> messages = new List<String>();
+                messages.Add("Capital de Rumania?");
+                messages.Add("Presidente de Ecuador?");
+                messages.Add("Primer elemento de la, tabla periodica?");
+                messages.Add("Descubridor del electrón?");
+                //respuestas
+                List<String[]> answers = new List<String[]>();
+                String[] ans1 = { "Lima", "Kajaskitan", "Correcto" };
+                answers.Add(ans1);
+                String[] ans2 = { "Humala", "Niño Nieto", "Diego Bustamante xD" };
+                answers.Add(ans2);
+                String[] ans3 = { "H", "N", "Br" };
+                answers.Add(ans3);
+                String[] ans4 = { "Rutterford", "Einstein", "Fischer" };
+                answers.Add(ans4);
+                //repuestas correctas
+                List<int> correct1 = new List<int>();
+                correct1.Add(1);
+                correct1.Add(2);
+                correct1.Add(3);
+                correct1.Add(1);
+                //puntos
+                List<int> points = new List<int>();
+                points.Add(1);
+                points.Add(5);
+                points.Add(1);
+                points.Add(5);
+
+                MiniGame mini = new MiniGame(eng, persons, messages, answers, correct1, points);
+
+
+                eng.getSM().add(mini);
+            }
+            if (KeyManager.enter)
+            {
+                //System.out.println("Solo se presiona enter");
+                //Cuando tu mismo vuelves a presionar enter se para la secuencia
+            }
+
+            //esta linea que viene siempre ha estado
             if (s == 3) s = 0;
 
         }

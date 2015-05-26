@@ -132,6 +132,22 @@ namespace rpgGame
                     writer.WriteValue(trig.getpY());
                     writer.WriteEndElement();
                 }
+                if (triggers[i] is TriggerMini)
+                {
+                    TriggerMini trig = (TriggerMini)triggers[i];
+                    writer.WriteStartElement("type");
+                    writer.WriteValue("TriggerMini");
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("par");
+                    writer.WriteValue(triggers[i].getX());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("par");
+                    writer.WriteValue(triggers[i].getY());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("par");
+                    writer.WriteValue(trig.getChangeTo());
+                    writer.WriteEndElement();
+                }
                 writer.WriteEndElement();
             }
                 writer.WriteEndElement();
@@ -183,6 +199,14 @@ namespace rpgGame
                         int px = reader.ReadElementContentAsInt();
                         int py = reader.ReadElementContentAsInt();
                         TriggerMap trig = new TriggerMap(x, y, change, px, py);
+                        triggers.Add(trig);
+                    }
+                    else if (type.Equals("TriggerMini"))
+                    {
+                        int x = reader.ReadElementContentAsInt();
+                        int y = reader.ReadElementContentAsInt();
+                        int change = reader.ReadElementContentAsInt();
+                        TriggerMini trig = new TriggerMini(x, y, change);
                         triggers.Add(trig);
                     }
                     //reader.Read(); //fin de trigger

@@ -115,8 +115,9 @@ namespace rpgGame
             stateMachine.AddState(LMS);
             saveToXml();*/
             loadFromXml(form);
+            //LMS.getMaps()[LMS.getMapAct()].GetTriggers().Add(new TriggerMini(5, 5, 1));
             saveToXml();
-            LMS.getMaps()[LMS.getMapAct()].GetTriggers().Add(new TriggerMini(5, 5, 1));
+            
             //Draw();
             //saveStateToBin();
             

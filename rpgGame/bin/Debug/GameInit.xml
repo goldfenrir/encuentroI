@@ -39,6 +39,12 @@
           <par>524</par>
           <par>630</par>
         </Trigger>
+        <Trigger>
+          <type>TriggerMini</type>
+          <par>5</par>
+          <par>5</par>
+          <par>1</par>
+        </Trigger>
       </Triggers>
     </Map>
     <Map>

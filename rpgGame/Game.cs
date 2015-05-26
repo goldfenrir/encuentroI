@@ -282,10 +282,10 @@ namespace rpgGame
             
         }
 
-        public bool loadStateToBin()
+        public bool loadStateToBin(string name)
         {
-            //string namefile = "savedState" + num.ToString() + ".bin";
-            Stream stream = File.Open("savedState.bin", FileMode.Open);
+            string namefile = "estados guardados\\" + name + ".bin";
+            Stream stream = File.Open(namefile, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
 
             //LocalMap lm = (LocalMap)stateMachine.PopState();

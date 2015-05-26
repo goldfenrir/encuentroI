@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbrirArchivoInterfaz.cs" />
     <Compile Include="DialogoDatos.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -204,6 +205,7 @@
     <Content Include="bin\Debug\fondoestrelladoamarillo.jpg" />
     <Content Include="bin\Debug\GameInit.xml" />
     <Content Include="bin\Debug\handcursor.jpg" />
+    <Content Include="bin\Debug\inventario.jpg" />
     <Content Include="bin\Debug\inventario.png" />
     <Content Include="bin\Debug\l1.png" />
     <Content Include="bin\Debug\l1.txt" />

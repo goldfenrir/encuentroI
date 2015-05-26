@@ -94,16 +94,11 @@ namespace rpgGame
                 //                    }
                 //                });
                 //                lgDialog.setVisible(true);
-                //eng.getSM().PopState();
-                /*do{
-                    Thread.Sleep(25);
-                    //eng.newThread.Join(10000);
-                }
-                while(eng.loadStateToBin());*/
-                //GuardarArchivoInterfaz guardar = new GuardarArchivoInterfaz(eng);
-                //eng.getSM().AddState(guardar);
-                eng.loadStateToBin();
-                return true;
+                eng.getSM().PopState();
+                AbrirArchivoInterfaz abrir = new AbrirArchivoInterfaz(eng);
+                eng.getSM().AddState(abrir);
+                //eng.loadStateToBin();
+                return false;
             }
         }
        /*

@@ -4,7 +4,7 @@
   <width>800</width>
   <height>740</height>
   <LocalMap>
-    <Cantidad_de_mapas>3</Cantidad_de_mapas>
+    <Cantidad_de_mapas>4</Cantidad_de_mapas>
     <Map>
       <MapId>0</MapId>
       <Number_of_layers>2</Number_of_layers>
@@ -30,6 +30,14 @@
           <par>2</par>
           <par>400</par>
           <par>618</par>
+        </Trigger>
+        <Trigger>
+          <type>TriggerChangeMap</type>
+          <par>13</par>
+          <par>1</par>
+          <par>3</par>
+          <par>524</par>
+          <par>630</par>
         </Trigger>
       </Triggers>
     </Map>
@@ -78,6 +86,26 @@
           <par>0</par>
           <par>620</par>
           <par>260</par>
+        </Trigger>
+      </Triggers>
+    </Map>
+    <Map>
+      <MapId>3</MapId>
+      <Number_of_layers>2</Number_of_layers>
+      <Source>
+        <Path>l1.txt</Path>
+        <Img>libraryf.jpg</Img>
+        <Path>lc7.txt</Path>
+        <Img>lc1.png</Img>
+      </Source>
+      <Triggers>
+        <Trigger>
+          <type>TriggerChangeMap</type>
+          <par>14</par>
+          <par>17</par>
+          <par>0</par>
+          <par>500</par>
+          <par>40</par>
         </Trigger>
       </Triggers>
     </Map>

@@ -206,7 +206,6 @@
     <Content Include="bin\Debug\GameInit.xml" />
     <Content Include="bin\Debug\handcursor.jpg" />
     <Content Include="bin\Debug\inventario.jpg" />
-    <Content Include="bin\Debug\inventario.png" />
     <Content Include="bin\Debug\l1.png" />
     <Content Include="bin\Debug\l1.txt" />
     <Content Include="bin\Debug\lc1.png" />

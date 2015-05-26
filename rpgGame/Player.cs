@@ -19,6 +19,8 @@ namespace rpgGame
         private int contDelay = 5;
         private int id;
         private int auxR = 0;
+        private int auxI = 0;
+        private Boolean flagI=false;
         public bool correct;
 
         public int Id
@@ -467,7 +469,7 @@ namespace rpgGame
                 //System.out.println("Solo se presiona enter");
                 //Cuando tu mismo vuelves a presionar enter se para la secuencia
             }
-
+  
             //esta linea que viene siempre ha estado
             if (s == 3) s = 0;
 
@@ -531,9 +533,32 @@ namespace rpgGame
 
         public void Draw(Graphics device)
         {
+           
             device.DrawImage(sprite[this.dir * 3 + s], positionX, positionY, width, height);
             Console.WriteLine("Pixel X: "+getPositionX()+", Pixel Y:"+getPositionY());        
        Console.WriteLine("Title X: "+getT(getPositionX())+", Title Y: "+getT(getPositionY()));
+       if (KeyManager.i)
+       {
+           if (auxI == 0) auxI++;
+       }
+       if (KeyManager.iR)
+       {
+           if (auxI == 1) auxI++;
+       }
+       if (auxI == 2)
+       {
+           
+           auxI = 0;
+           KeyManager.i = false;
+           KeyManager.iR = false;
+           if (flagI) flagI = false;
+           else flagI = true;
+       }
+       if (flagI)
+       {
+           Bitmap background = new Bitmap("inventario.png");
+           device.DrawImage(background, 0, 0, 800, 700);
+       }
        //Console.WriteLine("Aux: " + auxR);
         }
 

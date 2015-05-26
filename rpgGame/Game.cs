@@ -31,6 +31,12 @@ namespace rpgGame
         }
         private PictureBox worldMapSpritePb;
         private Graphics device;
+
+        public Graphics Device
+        {
+            get { return device; }
+            set { device = value; }
+        }
         private Image imageDevice;
         private StateMachine stateMachine;
         private LocalMap LMS;

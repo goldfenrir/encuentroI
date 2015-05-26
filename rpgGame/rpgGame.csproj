@@ -204,12 +204,15 @@
     <Content Include="bin\Debug\fondoestrelladoamarillo.jpg" />
     <Content Include="bin\Debug\GameInit.xml" />
     <Content Include="bin\Debug\handcursor.jpg" />
+    <Content Include="bin\Debug\inventario.png" />
     <Content Include="bin\Debug\l1.png" />
     <Content Include="bin\Debug\l1.txt" />
     <Content Include="bin\Debug\lc1.png" />
     <Content Include="bin\Debug\lc1.txt" />
     <None Include="bin\Debug\nilton.png" />
     <None Include="bin\Debug\raul.png" />
+    <Content Include="bin\Debug\lc7.txt" />
+    <Content Include="bin\Debug\libraryf.jpg" />
     <Content Include="bin\Debug\selector.png" />
     <Content Include="bin\Debug\zoo.jpg" />
     <Content Include="bin\Debug\zoo2.jpg" />

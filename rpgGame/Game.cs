@@ -21,7 +21,7 @@ namespace rpgGame
         private String title;
         private int width, height;
         private bool running;
-        private Thread newThread;
+        public Thread newThread;
         private Form1 gameForm;
 
         public Form1 GameForm
@@ -263,42 +263,65 @@ namespace rpgGame
             //string namefile = arch  + ".bin";
             Stream stream = File.Open("savedState.bin", FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
-            InGameMenu ing = (InGameMenu)stateMachine.PopState();
-            LocalMap lm = (LocalMap)stateMachine.PopState();
-            bformatter.Serialize(stream, lm);
-            bformatter.Serialize(stream, lm.Player);
-            stateMachine.AddState(lm);
-            stateMachine.AddState(ing);
+            //stateMachine.PopState();
+            //InGameMenu ing = (InGameMenu)stateMachine.PopState();
+            
+            //LocalMap lm = (LocalMap)stateMachine.PopState();
+            bformatter.Serialize(stream, LMS);
+            bformatter.Serialize(stream, LMS.Player);
+            //stateMachine.AddState(lm);
+            //stateMachine.AddState(ing);
             stream.Close();
+            
         }
 
-        public void loadStateToBin()
+        public bool loadStateToBin()
         {
             //string namefile = "savedState" + num.ToString() + ".bin";
             Stream stream = File.Open("savedState.bin", FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
-            LocalMap lm = (LocalMap)stateMachine.PopState();
-            LocalMap lmtemp = (LocalMap)bf.Deserialize(stream);
-             lm.MapAct = lmtemp.MapAct;
-            Player playerTemp = (Player)bf.Deserialize(stream);
-            lm.Player.Name = playerTemp.Name;
-            lm.Player.Gender = playerTemp.Gender;
-            lm.Player.Id = playerTemp.Id;
-            lm.Player.Level = playerTemp.Level;
-            lm.Player.NumberOfClues = playerTemp.NumberOfClues;
-            lm.Player.PositionX = playerTemp.PositionX;
-            lm.Player.PositionY = playerTemp.PositionY;
-            lm.Player.S = playerTemp.S;
-            lm.Player.CloseNess = playerTemp.CloseNess;
-            lm.Player.XMove = playerTemp.XMove;
-            lm.Player.YMove = playerTemp.YMove;
-            lm.Player.Dir = playerTemp.Dir;
-            lm.Player.Clues = playerTemp.Clues;
-            lm.Player.Inventory = playerTemp.Inventory;
 
-            stateMachine.AddState(lm);
+            //LocalMap lm = (LocalMap)stateMachine.PopState();
+            try
+            {
+                LocalMap lmtemp = (LocalMap)bf.Deserialize(stream);
+                LMS.MapAct = lmtemp.MapAct;
+            }
+            catch (System.Reflection.TargetInvocationException e)
+            {
+                Console.WriteLine("gg no pudo deserializar localmpa");
+            }
+             
+            Player playerTemp = (Player)bf.Deserialize(stream);
+            if (playerTemp != null) {
+                LMS.Player.Name = "hola";
+                Console.WriteLine(playerTemp.Name);
+                LMS.Player.Name = playerTemp.Name;
+            LMS.Player.Gender = playerTemp.Gender;
+            LMS.Player.Id = playerTemp.Id;
+            LMS.Player.Level = playerTemp.Level;
+            LMS.Player.NumberOfClues = playerTemp.NumberOfClues;
+            LMS.Player.PositionX = playerTemp.PositionX;
+            LMS.Player.PositionY = playerTemp.PositionY;
+            LMS.Player.S = playerTemp.S;
+            LMS.Player.CloseNess = playerTemp.CloseNess;
+            LMS.Player.XMove = playerTemp.XMove;
+            LMS.Player.YMove = playerTemp.YMove;
+            LMS.Player.Dir = playerTemp.Dir;
+            LMS.Player.Clues = playerTemp.Clues;
+            LMS.Player.Inventory = playerTemp.Inventory;
+                }
+            else
+            {
+                Console.WriteLine("gg el player es nulo");
+            }
+            //LMS.Player = playerTemp;
+            //LMS = lm;
+            //stateMachine.PopState();//popea el mainmenu
+            //stateMachine.PopState();//popea el ex lms
+            //stateMachine.AddState(LMS);
             stream.Close();
-          
+            return true;
         }
 
         public StateMachine getSM()

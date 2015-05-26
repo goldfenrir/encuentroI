@@ -26,9 +26,9 @@ namespace rpgGame
             get { return id; }
             set { id = value; }
         }
-        private String name;
+        private string name;
 
-        public String Name
+        public string Name
         {
             get { return name; }
             set { name = value; }
@@ -413,14 +413,14 @@ namespace rpgGame
             {
                 if (auxR == 1) auxR++;
             }
-            if (auxR == 2)
+            /*if (auxR == 2)
             {
                 KeyManager.mR = false;
                 KeyManager.m = false;
                 auxR = 0;
                 InGameMenu inGameM = new InGameMenu(eng);
                 eng.getSM().AddState(inGameM);
-            }
+            }*/
             if (KeyManager.s && correct)
             {
                 Console.WriteLine("entra al correct y s ");

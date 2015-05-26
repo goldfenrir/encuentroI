@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace rpgGame
 {
@@ -89,6 +90,11 @@ namespace rpgGame
                 //                });
                 //                lgDialog.setVisible(true);
                 //eng.getSM().PopState();
+                /*do{
+                    Thread.Sleep(25);
+                    //eng.newThread.Join(10000);
+                }
+                while(eng.loadStateToBin());*/
                 eng.loadStateToBin();
                 return true;
             }

@@ -15,7 +15,7 @@ using System.Xml.Schema;
 namespace rpgGame
 {
     [Serializable()]
-    public class LocalMap : State, IXmlSerializable
+    public class LocalMap : State, IXmlSerializable, ISerializable
     {
         private Map map;
         private List<Map> maps = new List<Map>();
@@ -73,7 +73,7 @@ namespace rpgGame
         public LocalMap(SerializationInfo info, StreamingContext ctxt)
         {
             //map = (Map)info.GetValue("LMMap", typeof(Map));
-            numMaps = (int)info.GetValue("LMNumMaps", typeof(int));
+            //numMaps = (int)info.GetValue("LMNumMaps", typeof(int));
             maps = (List<Map>)info.GetValue("LMMaps", typeof(List<Map>));
             //player = (Player)info.GetValue("LMPlayer", typeof(Player));
             mapAct = (int)info.GetValue("LMMapAct", typeof(int));
@@ -83,7 +83,7 @@ namespace rpgGame
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             //info.AddValue("LMMap", map);
-            info.AddValue("LMNumMaps", numMaps);
+            //info.AddValue("LMNumMaps", numMaps);
             info.AddValue("LMMaps", maps);
             //info.AddValue("LMPlayer", player);
             info.AddValue("LMMapAct", mapAct);

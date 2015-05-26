@@ -25,7 +25,7 @@ namespace rpgGame
         private Bitmap back2;
         private Game eng;
         private int x=275;    
-        private int y=350;
+        private int y=200;
         private int  widthB=250; //buttton width
         private int  heightB=30; //button height
         public AbrirArchivoInterfaz(Game eng){
@@ -35,10 +35,16 @@ namespace rpgGame
             archivos = Directory.GetFiles("estados guardados\\", "*.bin");
             buttons=new List<GButton>();        
         //fntT =new Font("Comic Sans MS",Font.BOLD,fontSizeT);
-            fntT = new Font(FontFamily.Families[5], 40);
+            fntT = new Font(FontFamily.Families[52], 20);
+            space = 500 / archivos.Length;
             sel=new Selector(x - widthB +100,y,widthB-100,heightB,space,3);
-            for (int i = 0; i < archivos.Length;i++ )
-                buttons.Add(new GButton(archivos[i], x, y+60*i, widthB, heightB + 50));
+            for (int i = 0; i < archivos.Length; i++)
+            {
+                string[] cadena = new string[10];
+                    cadena = archivos[i].Split(null);
+
+                buttons.Add(new GButton(cadena[2], x, y + space * i, widthB, heightB + 50));
+            }
             //buttons.Add(new GButton(archivos[1], x, y+100, widthB, heightB+50));
             //buttons.Add(new GButton(archivos[2], x, y + 200, widthB, heightB + 50));
             this.eng=eng;
@@ -52,12 +58,14 @@ namespace rpgGame
             dev.DrawImage(background, 0, 0, 800, 700);
             dev.DrawImage(back2, 200, 50, 400, 500);
             //eng.GameForm.Opacity = 0.1;
-            Font fnt0 = new Font(FontFamily.Families[52], 30);
-            dev.DrawString(dialogo1, fnt0, new SolidBrush(Color.Brown), new Point(220,100));
+            Font fnt0 = new Font(FontFamily.Families[52], 25);
+            dev.DrawString(dialogo1, fnt0, new SolidBrush(Color.Brown), new Point(150,100));
             dev.DrawString(nombre, fnt0, new SolidBrush(Color.Green), new Point(250, 150));
             fnt0 = new Font(FontFamily.Families[52], 20);
+
             for (int i = 0; i < buttons.Count; i++)
             {
+                buttons[i].SetFont(fntT);
                 buttons[i].render(dev);
             }
             sel.render(dev);

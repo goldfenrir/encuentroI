@@ -47,5 +47,10 @@ namespace rpgGame
         //g.drawString(title,x+cen,y+fontSize);
         g.DrawString(title, fnt0, new SolidBrush(Color.Black), new Point(x + cen, y+fontSize-20));
     }
+
+    public void SetFont(Font fn)
+    {
+        fnt0 = fn;
+    }
     }
 }

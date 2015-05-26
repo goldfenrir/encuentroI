@@ -284,7 +284,7 @@ namespace rpgGame
 
         public bool loadStateToBin(string name)
         {
-            string namefile = "estados guardados\\" + name + ".bin";
+            string namefile =  name ;
             Stream stream = File.Open(namefile, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
 

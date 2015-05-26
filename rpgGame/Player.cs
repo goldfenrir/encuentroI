@@ -556,7 +556,7 @@ namespace rpgGame
        }
        if (flagI)
        {
-           Bitmap background = new Bitmap("inventario.png");
+           Bitmap background = new Bitmap("inventario.jpg");
            device.DrawImage(background, 0, 0, 800, 700);
        }
        //Console.WriteLine("Aux: " + auxR);

@@ -69,9 +69,11 @@ namespace rpgGame
                 }*/
                 
                 Console.WriteLine("1");
-                eng.saveStateToBin();
-                //KeyManager.menu = false;
                 eng.getSM().PopState();
+                GuardarArchivoInterfaz guardar = new GuardarArchivoInterfaz(eng);
+                eng.getSM().AddState(guardar);;
+                //KeyManager.menu = false;
+                //eng.getSM().PopState();
                  
                 
             }

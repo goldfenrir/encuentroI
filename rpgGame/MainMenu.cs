@@ -9,8 +9,10 @@ using System.Threading;
 
 namespace rpgGame
 {
+    
     class MainMenu : State
     {
+      
         protected List<String> options;
         protected List<GButton> buttons;
         private Selector sel;
@@ -63,7 +65,10 @@ namespace rpgGame
         sel.render(g);
         //Console.WriteLine("termina el draw de main menu .___.");
     }
-    public override bool ordenPop(){
+
+    [STAThread]
+    public override bool ordenPop()
+    {
         //arreglar
         if (KeyManager.enter)
         {
@@ -95,6 +100,8 @@ namespace rpgGame
                     //eng.newThread.Join(10000);
                 }
                 while(eng.loadStateToBin());*/
+                //GuardarArchivoInterfaz guardar = new GuardarArchivoInterfaz(eng);
+                //eng.getSM().AddState(guardar);
                 eng.loadStateToBin();
                 return true;
             }

@@ -52,6 +52,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -91,6 +92,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GButton.cs" />
     <Compile Include="Goals.cs" />
+    <Compile Include="GuardarArchivoInterfaz.cs" />
     <Compile Include="InGameMenu.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
@@ -212,6 +214,9 @@
     <Content Include="bin\Debug\zoo.jpg" />
     <Content Include="bin\Debug\zoo2.jpg" />
     <Content Include="bin\Debug\zoofinal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\estados guardados\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -36,6 +36,15 @@ namespace rpgGame
             //Application.Exit();
         }
 
+        [STAThread]
+        //[STAThreadAttribute]
+        public bool muestraBuscadorArch()
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.ShowDialog();
+            return false;
+        }
+
         /*
         private void Form1_Load(object sender, EventArgs e)
         {

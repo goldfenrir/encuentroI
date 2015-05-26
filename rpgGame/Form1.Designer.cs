@@ -43,6 +43,7 @@
         }
 
         #endregion
+
         /*
         private System.Windows.Forms.Label label_game;
         private System.Windows.Forms.Button but_start;

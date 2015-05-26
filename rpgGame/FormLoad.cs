@@ -21,9 +21,27 @@ namespace rpgGame
         {
 
         }
-        public ComboBox getCombo()
+
+        private void combo_load_SelectedIndexChanged(object sender, EventArgs e)
         {
-            return this.combo_load;
+
         }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+        }
+
+
     }
 }

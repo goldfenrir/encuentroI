@@ -259,10 +259,10 @@ namespace rpgGame
             return this.lc;
         }
 
-        public void saveStateToBin()
+        public void saveStateToBin(string arch)
         {
-            //string namefile = arch  + ".bin";
-            Stream stream = File.Open("savedState.bin", FileMode.Create);
+            string namefile = "estados guardados\\" + arch  + ".bin";
+            Stream stream = File.Open(namefile, FileMode.Create);
             BinaryFormatter bformatter = new BinaryFormatter();
             //stateMachine.PopState();
             //InGameMenu ing = (InGameMenu)stateMachine.PopState();

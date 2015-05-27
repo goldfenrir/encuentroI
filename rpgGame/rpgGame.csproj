@@ -192,6 +192,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\libraryf.jpg" />
+    <None Include="Resources\libraryf.jpg.bmp" />
+    <None Include="Resources\lc7.txt" />
     <None Include="bin\Debug\cecilia.png" />
     <Content Include="bin\Debug\bgF.jpg" />
     <Content Include="bin\Debug\bg_barn.png" />

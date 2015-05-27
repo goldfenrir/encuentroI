@@ -28,7 +28,7 @@ namespace rpgGame
             loadWorld(path);
             gTilePalette = SliceImg(dirImg);
         }
-
+        
         private Bitmap[] SliceImg(String dirImg)
         {
             int cW = (totalX / width);

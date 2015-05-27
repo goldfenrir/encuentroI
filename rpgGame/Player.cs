@@ -22,7 +22,7 @@ namespace rpgGame
         private int auxI = 0;
         private Boolean flagI=false;
         public bool correct;
-
+        private Bitmap background = new Bitmap("inventario.jpg");
         public int Id
         {
             get { return id; }
@@ -556,7 +556,7 @@ namespace rpgGame
        }
        if (flagI)
        {
-           Bitmap background = new Bitmap("inventario.jpg");
+           
            device.DrawImage(background, 0, 0, 800, 700);
        }
        //Console.WriteLine("Aux: " + auxR);

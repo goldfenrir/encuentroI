@@ -140,6 +140,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\estados guardados\a.bin" />
+    <None Include="bin\Debug\estados guardados\de.bin" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -223,9 +225,7 @@
     <Content Include="bin\Debug\zoo2.jpg" />
     <Content Include="bin\Debug\zoofinal.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\estados guardados\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

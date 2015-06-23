@@ -33,6 +33,7 @@ namespace rpgGame
         private int y=350;
         private int  widthB=250; //buttton width
         private int  heightB=30; //button height
+        public bool multiplayer = false;
         public DialogoDatos(Game eng){
         //aca se debe cargar el menu inicial
         //carga de botones
@@ -127,7 +128,7 @@ namespace rpgGame
                 else delayEnter--;
             }
 
-            if (KeyManager.enter && actSelector == sel)
+            if (KeyManager.enter && actSelector == sel && !multiplayer)
             {
                 if (sel.getOpt() == 1) genero = 0;
                 if (sel.getOpt() == 2) genero = 1;
@@ -141,6 +142,23 @@ namespace rpgGame
                     return true;
                 }
 
+            }
+            if (KeyManager.enter && actSelector == sel && multiplayer)
+            {
+                if (sel.getOpt() == 1) genero = 0;
+                if (sel.getOpt() == 2) genero = 1;
+                if (sel.getOpt() == 3)
+                {
+                    DialogoDatos dd = (DialogoDatos)eng.getSM().PopState();
+                    LocalMap lm = (LocalMap)eng.getSM().PopState();
+                    Lobby lob = new Lobby(eng);
+                    lm.Player.Name = nombre;
+                    lm.Player.Gender = genero;
+                    eng.getSM().AddState(lm);
+                    eng.getSM().AddState(lob);
+                    eng.getSM().AddState(dd);
+                    return true;
+                }
             }
             return false;
         }

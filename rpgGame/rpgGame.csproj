@@ -100,6 +100,7 @@
     <Compile Include="KeyManager.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="LoadFiles.cs" />
+    <Compile Include="Lobby.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MiniGame.cs" />
